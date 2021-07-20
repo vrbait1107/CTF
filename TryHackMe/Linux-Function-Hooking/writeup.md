@@ -2,9 +2,6 @@
 
 <br/>
 
-
-```
-
 ### Task 1: Introduction 
 
 ```
@@ -74,7 +71,5 @@ Ans: No Answers needed.
 
 ```
 
-
-```
 
 
