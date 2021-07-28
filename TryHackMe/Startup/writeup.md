@@ -192,7 +192,7 @@ We have Write access to ftp directory <br/>
 We use pentestmonkey php reverse shell <br/>
 https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php
 
-![Alt text](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Startup/Picture-2.jpg "FTP Directory")
+![Alt text](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Startup/Picture-2.png "FTP Directory")
 
 ```
 root@ip-10-10-4-152:~# ftp 10.10.100.88
