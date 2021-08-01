@@ -46,7 +46,7 @@ Lets Visit Website
 
 ```
 
-![Default Webpage](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Startup/Picture-1.png "Default Webpage")
+![Default Webpage](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Cyborg/Picture-1.png "Default Webpage")
 
 Lets Brute Force Directory.
 
@@ -93,11 +93,11 @@ http_access allow auth_users
 
 Now, Lets Visit /admin path.
 
-![admin](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Startup/Picture-5.png "admin")
+![admin](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Cyborg/Picture-5.png "admin")
 
 Now visit /admin/admin.html
 
-![admin html](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Startup/Picture-6.png "admin html")
+![admin html](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Cyborg/Picture-6.png "admin html")
 
 ```
 
@@ -127,6 +127,7 @@ Now visit /admin/admin.html
                 ############################################
                 ############################################
 
+```
 
 Now Click on Archive Link We have another links in dropdown.
 Listen and Download.
@@ -146,6 +147,8 @@ sudo apt install borgbackup -- Unix Based System.
 
 We Required Password to Extract it, So Lets Crack Password which we have got in /etc/squid/passwd path.
 
+```
+
 root@ip-10-10-234-254:~/Desktop# john --format=md5crypt --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
 Using default input encoding: UTF-8
 Loaded 1 password hash (md5crypt, crypt(3) $1$ (and variants) [MD5 256/256 AVX2 8x3])
@@ -156,12 +159,14 @@ squidward (?)
 Use the "--show" option to display all of the cracked passwords reliably
 Session completed.
 
+```
 
 By Using this password extarct repositoty. We will get .txt file inside that Repositoy Which have credential of Alex.
 
 Lets SSH Using this Credential
 We Already Know that Port 22 Open (SSH Port)
 
+```
 root@ip-10-10-234-254:~# ssh alex@10.10.109.23
 The authenticity of host '10.10.109.23 (10.10.109.23)' can't be established.
 ECDSA key fingerprint is SHA256:uB5ulnLcQitH1NC30YfXJUbdLjQLRvGhDRUgCSAD7F8.
@@ -223,7 +228,8 @@ flag{1_hop3_y0u_ke3p_th3_arch1v3s_saf3}
 ```
 
 ```
-Root Privsec
+
+Root Privsec (root.txt)
 
 alex@ubuntu:~$
 alex@ubuntu:~$ sudo -l
@@ -361,5 +367,14 @@ root.txt
 bash-4.3# cat root.txt
 flag{Than5s_f0r_play1ng_H0p£_y0u_enJ053d}
 bash-4.3#
+
+```
+
+```
+4. What is the user.txt flag?
+Ans: flag{1_hop3_y0u_ke3p_th3_arch1v3s_saf3}
+
+5. What is the root.txt flag?
+Ans: flag{Than5s_f0r_play1ng_H0p£_y0u_enJ053d}
 
 ```
