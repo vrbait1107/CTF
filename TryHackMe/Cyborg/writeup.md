@@ -64,7 +64,7 @@ First Visit /etc Directory.
 We have anothe directory named squid inside /etc directory.
 http://10.10.64.125/etc/squid
 
-![etc Directory](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Startup/Picture-2.png "etc Directory")
+![etc Directory](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Cyborg/Picture-2.png "etc Directory")
 
 Now. Check /etc/squid/passwd file
 We will use this password Later.
@@ -72,7 +72,7 @@ http://10.10.64.125/etc/squid/passwd
 
 music_archive:$apr1$BpZ.Q.1m$F0qqPwHSOG50URuOVQTTn.
 
-![Password File](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Startup/Picture-3.png "Password File")
+![Password File](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Cyborg/Picture-3.png "Password File")
 
 ```
 
@@ -89,7 +89,7 @@ http_access allow auth_users
 
 ```
 
-![Config File](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Startup/Picture-4.png "Config File")
+![Config File](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Cyborg/Picture-4.png "Config File")
 
 Now, Lets Visit /admin path.
 
