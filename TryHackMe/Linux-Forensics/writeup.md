@@ -234,7 +234,7 @@ Ans: No Answers Needed.
 
 ### Task 7 Apache Log Analysis II
 
-We got following access.log [access log file][https://github.com/vrbait1107/ctf_writeups/blob/main/tryhackme/assets/linux-forensics/access.log]
+We got following access.log [access log file](https://github.com/vrbait1107/ctf_writeups/blob/main/tryhackme/assets/linux-forensics/access.log)
 
 <br/>
 
