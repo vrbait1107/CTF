@@ -33,7 +33,7 @@ We can also use this string to identify traffic from potentially malicious tools
 </p>
 
 <p>We got following access.log</p>
-[access.log](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/assets/Linux-Forensics/access.log)
+[access log file](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/assets/Linux-Forensics/access.log)
 
 ```
 fred@acmeweb:/var/log/apache2$ ls -ls
@@ -236,7 +236,9 @@ Ans: No Answers Needed.
 ### Task 7 Apache Log Analysis II
 
 <p>We got following access.log</p>
-[access.log](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/assets/Linux-Forensics/access1.log)
+[access log file](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/assets/Linux-Forensics/access-1.log)
+
+<br/>
 
 <p>The log file is a lot smaller this time around, so it looks like our attacker was a little more subtle. There also don't appear to be obvious user agents anymore. Fortunately, there are a few other ways of identifying traffic originating from scanners. The time between each request is a good metric for most tools. You can also identify individual tools from signatures left in the requests; for example, Nmap will send HTTP requests with a random non-standard method when performing certain enumeration tasks. More aggressive tools can also be identified simply from the number of requests sent during any given attack; directory brute-forcing tools are a perfect example of this and are likely to fall foul of banning systems like fail2ban.</p>
 
