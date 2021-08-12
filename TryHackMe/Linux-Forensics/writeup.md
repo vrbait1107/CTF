@@ -32,8 +32,7 @@ Ans: No Anwer Needed.
 We can also use this string to identify traffic from potentially malicious tools as scanning tools like Nmap, SQLmap, DirBuster and Nikto leak their identity's through default user-agent strings.
 </p>
 
-<p>We got following access.log</p>
-[access log file](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/assets/Linux-Forensics/access.log)
+We got following access.log [access log file](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/assets/Linux-Forensics/access-1.log)
 
 ```
 fred@acmeweb:/var/log/apache2$ ls -ls
@@ -235,8 +234,7 @@ Ans: No Answers Needed.
 
 ### Task 7 Apache Log Analysis II
 
-<p>We got following access.log</p>
-[access log file](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/assets/Linux-Forensics/access-1.log)
+We got following access.log [access log file][https://github.com/vrbait1107/ctf_writeups/blob/main/tryhackme/assets/linux-forensics/access.log]
 
 <br/>
 
