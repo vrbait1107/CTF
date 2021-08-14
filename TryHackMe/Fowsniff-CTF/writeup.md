@@ -771,6 +771,7 @@ If its easier, follow this walkthrough with the deployed machine on the site.
 
 Ans: No Answer Needed.
 
+
 ```
 
 <p>This file run when we login so that means we can get reverse shell as root.</p>
@@ -2004,25 +2005,5 @@ hosts.equiv Not Found
 
 ./linpeas.sh: 3338: ./linpeas.sh: Syntax error: Unterminated quoted string
 baksteen@fowsniff:~$
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
-
-```
 
 ```
