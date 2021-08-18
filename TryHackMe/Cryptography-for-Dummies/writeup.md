@@ -145,7 +145,7 @@ Ans: watermelon
 
 ```
 
-![From Base64](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/CrypFromgraphy-for-Dummies/Picture-6.png "From Base64")
+![From Base64](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Cryptography-for-Dummies/Picture-6.png "From Base64")
 
 ### Task 5 Thanks for reading!
 
