@@ -162,7 +162,7 @@ mission4@linuxagency:~/flag$
 ```
 
 ```
-5. What is the mission5 flag?
+6. What is the mission6 flag?
 Ans: mission6{1fa67e1adc244b5c6ea711f0c9675fde}
 ```
 
@@ -230,7 +230,7 @@ mission7@linuxagency:/home/mission7$
 ```
 
 ```
-8. What is the mission9 flag?
+9. What is the mission9 flag?
 Ans: mission9{ba1069363d182e1c114bef7521c898f5}
 ```
 
@@ -254,7 +254,7 @@ mission8@linuxagency:~$
 ```
 
 ```
-9. What is the mission10 flag?
+10. What is the mission10 flag?
 Ans: mission10{0c9d1c7c5683a1a29b05bb67856524b6}
 ```
 
@@ -277,7 +277,7 @@ mission9@linuxagency:~$
 ```
 
 ```
-10. What is the mission11 flag?
+11. What is the mission11 flag?
 Ans: mission11{db074d9b68f06246944b991d433180c0}
 
 ```
@@ -302,7 +302,7 @@ mission10@linuxagency:~$
 ```
 
 ```
-11. What is the mission12 flag?
+12. What is the mission12 flag?
 Ans: mission12{f449a1d33d6edc327354635967f9a720}
 
 ```
@@ -321,7 +321,7 @@ mission11@linuxagency:~$
 ```
 
 ```
-12. What is the mission13 flag?
+13. What is the mission13 flag?
 Ans: mission13{076124e360406b4c98ecefddd13ddb1f}
 
 ```
@@ -343,7 +343,7 @@ mission12@linuxagency:~$
 ```
 
 ```
-13. What is the mission14 flag?
+14. What is the mission14 flag?
 Ans: mission14{d598de95639514b9941507617b9e54d2}
 
 ```
@@ -369,7 +369,7 @@ mission13@linuxagency:~$
 ```
 
 ```
-14. What is the mission14 flag?
+15. What is the mission15 flag?
 Ans: mission15{fc4915d818bfaeff01185c3547f25596}
 ```
 
@@ -389,7 +389,7 @@ mission14@linuxagency:~$
 ```
 
 ```
-15. What is the mission14 flag?
+16. What is the mission16 flag?
 Ans: mission16{884417d40033c4c2091b44d7c26a908e}
 ```
 
@@ -406,5 +406,229 @@ mission15@linuxagency:~$ cat flag.txt
 6D697373696F6E31367B38383434313764343030333363346332303931623434643763323661393038657D
 mission15@linuxagency:~$ echo '6D697373696F6E31367B38383434313764343030333363346332303931623434643763323661393038657D' | xxd -r -p
 mission16{884417d40033c4c2091b44d7c26a908e}mission15@linuxagency:~$
+
+```
+
+```
+17. What is the mission17 flag?
+Ans: mission17{49f8d1348a1053e221dfe7ff99f5cbf4}
+```
+
+```
+mission16@linuxagency:~$ ls -la
+total 28
+drwxr-x---  2 mission16 mission16 4096 Jan 12  2021 .
+drwxr-xr-x 45 root      root      4096 Jan 12  2021 ..
+lrwxrwxrwx  1 mission16 mission16    9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 mission16 mission16 3771 Jan 12  2021 .bashrc
+-r--------  1 mission16 mission16 8440 Jan 12  2021 flag
+-rw-r--r--  1 mission16 mission16  807 Jan 12  2021 .profile
+mission16@linuxagency:~$ file flag
+flag: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=1606102f7b80d832eabee1087180ea7ce24a96ca, not stripped
+mission16@linuxagency:~$ chmod 700 flag
+mission16@linuxagency:~$ ./flag
+
+mission17{49f8d1348a1053e221dfe7ff99f5cbf4}
+
+mission16@linuxagency:~$
+
+```
+
+```
+18. What is the mission18 flag?
+Ans: mission18{f09760649986b489cda320ab5f7917e8}
+```
+
+```
+mission17@linuxagency:/home/mission16$ cd ~
+mission17@linuxagency:~$ ls -la
+total 20
+drwxr-x---  2 mission17 mission17 4096 Jan 12  2021 .
+drwxr-xr-x 45 root      root      4096 Jan 12  2021 ..
+lrwxrwxrwx  1 mission17 mission17    9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 mission17 mission17 3771 Jan 12  2021 .bashrc
+-rwxr-xr-x  1 mission17 mission17  475 Jan 12  2021 flag.java
+-rw-r--r--  1 mission17 mission17  807 Jan 12  2021 .profile
+mission17@linuxagency:~$ javac flag.java
+mission17@linuxagency:~$ ls -la
+total 24
+drwxr-x---  2 mission17 mission17 4096 Aug 29 09:50 .
+drwxr-xr-x 45 root      root      4096 Jan 12  2021 ..
+lrwxrwxrwx  1 mission17 mission17    9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 mission17 mission17 3771 Jan 12  2021 .bashrc
+-rw-rw-r--  1 mission17 mission17 1199 Aug 29 09:50 flag.class
+-rwxr-xr-x  1 mission17 mission17  475 Jan 12  2021 flag.java
+-rw-r--r--  1 mission17 mission17  807 Jan 12  2021 .profile
+mission17@linuxagency:~$ java flag
+mission18{f09760649986b489cda320ab5f7917e8}
+mission17@linuxagency:~$
+
+```
+
+```
+19. What is the mission19 flag?
+Ans: mission19{a0bf41f56b3ac622d808f7a4385254b7}
+```
+
+```
+mission17@linuxagency:~$ su mission18
+Password:
+mission18@linuxagency:/home/mission17$ cd ~
+mission18@linuxagency:~$ ls -la
+total 20
+drwxr-x---  2 mission18 mission18 4096 Jan 12  2021 .
+drwxr-xr-x 45 root      root      4096 Jan 12  2021 ..
+lrwxrwxrwx  1 mission18 mission18    9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 mission18 mission18 3771 Jan 12  2021 .bashrc
+-r--------  1 mission18 mission18  312 Jan 12  2021 flag.rb
+-rw-r--r--  1 mission18 mission18  807 Jan 12  2021 .profile
+mission18@linuxagency:~$ chmod 700 flag.rb
+mission18@linuxagency:~$ ruby flag.rb
+mission19{a0bf41f56b3ac622d808f7a4385254b7}
+mission18@linuxagency:~$
+
+```
+
+```
+20. What is the mission20 flag?
+Ans: mission20{b0482f9e90c8ad2421bf4353cd8eae1c}
+```
+
+```
+mission19@linuxagency:~$ gcc flag.c -o flag
+flag.c: In function ‘main’:
+flag.c:5:18: warning: implicit declaration of function ‘strlen’ [-Wimplicit-function-declaration]
+     int length = strlen(flag);
+                  ^~~~~~
+flag.c:5:18: warning: incompatible implicit declaration of built-in function ‘strlen’
+flag.c:5:18: note: include ‘<string.h>’ or provide a declaration of ‘strlen’
+mission19@linuxagency:~$ ls -la
+total 32
+drwxr-x---  2 mission19 mission19 4096 Aug 29 10:05 .
+drwxr-xr-x 45 root      root      4096 Jan 12  2021 ..
+lrwxrwxrwx  1 mission19 mission19    9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 mission19 mission19 3771 Jan 12  2021 .bashrc
+-rwxrwxr-x  1 mission19 mission19 8432 Aug 29 10:05 flag
+-r--------  1 mission19 mission19  276 Jan 12  2021 flag.c
+-rw-r--r--  1 mission19 mission19  807 Jan 12  2021 .profile
+mission19@linuxagency:~$ ./flag
+mission20{b0482f9e90c8ad2421bf4353cd8eae1c}
+
+mission19@linuxagency:~$
+
+```
+
+```
+21. What is the mission21 flag?
+Ans: mission21{7de756aabc528b446f6eb38419318f0c}
+```
+
+```
+mission20@linuxagency:/home/mission19$ cd ~
+mission20@linuxagency:~$ ls -la
+total 20
+drwxr-x---  2 mission20 mission20 4096 Jan 12  2021 .
+drwxr-xr-x 45 root      root      4096 Jan 12  2021 ..
+lrwxrwxrwx  1 mission20 mission20    9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 mission20 mission20 3771 Jan 12  2021 .bashrc
+-r--------  1 mission20 mission20  186 Jan 12  2021 flag.py
+-rw-r--r--  1 mission20 mission20  807 Jan 12  2021 .profile
+mission20@linuxagency:~$ python flag.py
+mission21{7de756aabc528b446f6eb38419318f0c}
+mission20@linuxagency:~$
+
+```
+
+```
+22. What is the mission22 flag?
+Ans: mission22{24caa74eb0889ed6a2e6984b42d49aaf}
+```
+
+```
+$ /bin/bash
+mission22{24caa74eb0889ed6a2e6984b42d49aaf}
+mission21@linuxagency:~$
+
+```
+
+```
+23. What is the mission23 flag?
+Ans: mission23{3710b9cb185282e3f61d2fd8b1b4ffea}
+```
+
+```
+mission21@linuxagency:~$ su mission22
+Password:
+Python 3.6.9 (default, Oct  8 2020, 12:12:24)
+[GCC 8.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+
+>>> import pty;pty.spawn("/bin/bash")
+mission22@linuxagency:/home/mission21$ cd ~
+mission22@linuxagency:~$ ls -l
+total 4
+-r-------- 1 mission22 mission22 44 Jan 12  2021 flag.txt
+mission22@linuxagency:~$ cat flag.txt
+mission23{3710b9cb185282e3f61d2fd8b1b4ffea}
+mission22@linuxagency:~$
+
+```
+
+```
+24. What is the mission24 flag?
+Ans: mission24{dbaeb06591a7fd6230407df3a947b89c}
+```
+
+```
+mission22@linuxagency:~$ su mission23
+Password:
+mission23@linuxagency:/home/mission22$ cd ~
+mission23@linuxagency:~$ ls -la
+total 24
+drwxr-x---  3 mission23 mission23 4096 Jan 15  2021 .
+drwxr-xr-x 45 root      root      4096 Jan 12  2021 ..
+lrwxrwxrwx  1 mission23 mission23    9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 mission23 mission23 3771 Jan 12  2021 .bashrc
+drwxrwxr-x  3 mission23 mission23 4096 Jan 12  2021 .local
+-r--------  1 mission23 mission23   69 Jan 15  2021 message.txt
+-rw-r--r--  1 mission23 mission23  807 Jan 12  2021 .profile
+mission23@linuxagency:~$ cat message.txt
+The hosts will help you.
+[OPTIONAL] Maybe you will need curly hairs.
+mission23@linuxagency:~$ cat /etc/hosts
+127.0.0.1       localhost       linuxagency     mission24.com
+127.0.1.1       ubuntu  linuxagency
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback      linuxagency
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+mission23@linuxagency:~$ wget mission24.com
+--2021-08-29 10:27:19--  http://mission24.com/
+Resolving mission24.com (mission24.com)... 127.0.0.1
+Connecting to mission24.com (mission24.com)|127.0.0.1|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 10924 (11K) [text/html]
+Saving to: ‘index.html’
+
+index.html          100%[===================>]  10.67K  --.-KB/s    in 0s
+
+2021-08-29 10:27:19 (388 MB/s) - ‘index.html’ saved [10924/10924]
+
+mission23@linuxagency:~$ ls -la
+total 36
+drwxr-x---  3 mission23 mission23  4096 Aug 29 10:27 .
+drwxr-xr-x 45 root      root       4096 Jan 12  2021 ..
+lrwxrwxrwx  1 mission23 mission23     9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 mission23 mission23  3771 Jan 12  2021 .bashrc
+-rw-rw-r--  1 mission23 mission23 10924 Jan 12  2021 index.html
+drwxrwxr-x  3 mission23 mission23  4096 Jan 12  2021 .local
+-r--------  1 mission23 mission23    69 Jan 15  2021 message.txt
+-rw-r--r--  1 mission23 mission23   807 Jan 12  2021 .profile
+mission23@linuxagency:~$ cat index.html | grep mission
+    <title>mission24{dbaeb06591a7fd6230407df3a947b89c}</title>
+mission23@linuxagency:~$
 
 ```
