@@ -828,7 +828,7 @@ viktor{b52c60124c0f8f85fe647021122b3d9a}
 
 ```
 
-### Task 4: Privilege Escalation 
+### Task 4: Privilege Escalation
 
 Welcome to Privilege Escalation, 47. Glad you made it this far!!! Now, here are some special targets. Your Target is to teach these bad guys a lesson.
 
@@ -1208,6 +1208,12 @@ penelope@linuxagency:~$
 ```
 
 ```
+9. What is robert's Passphrase?
+Ans: industryweapon
+
+```
+
+```
 maya@linuxagency:~$ ls -la
 total 52
 drwxr-x---  5 maya maya 4096 Jan 15  2021 .
@@ -1266,6 +1272,28 @@ maya@linuxagency:~/old_robert_ssh$ cat id_rsa.pub
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDG993ZxnyDUpDtF/8R0oZv5XWMY0heGLopfBteg79pQb3sIOjeuy8+Cx+P2i7PybERDVVq3c5tw+wpqHjQCKhH+wFgo8ApUlzIeiJ0AdExtLh0+BY/4xf5A4qdc1xT5Jl592BX/vH4epHji9YSLB8bzOlx5stAyqhgosuDCehdgrwZE2fX37DuLtSvR4Jw53Yq8XO3XE9fwYFytvaGbr48lI727vJ4kcUGEe5tjveHNQLoMhJEabcNIdmoH9uFm0aDj/tbWzyjFGS38s/5TCod7SHMRYXSbzy2BcNwLerPfsTQgIza92om2HyovHWx4olt9doZbJ8Fg2LLmgXlz5Cv robert@0fd0d503162d
 maya@linuxagency:~/old_robert_ssh$
 
-
 ```
 
+```
+root@ip-10-10-121-66:~/Desktop#  /opt/john/ssh2john.py id_rsa > hash.txt
+
+root@ip-10-10-121-66:~/Desktop# cat hash.txt
+id_rsa:$sshng$1$16$7903FE7BDBA051C4B0BF7C6C5C597E0B$1200$891ce91faaa35c3be6554e70c1853b4d07f240722a63347436abb39d9dce897c9a48e6a8be03d77463f7af9d2f7c857a8b4ec7ed949ccf3e27b9e9d8246204ed97c362d55503d47a21d70865e7181762f739f1e847f82118e95b2c2f87caf93244c72b1206a3a5d57bcc23d11dc922062a31cf1d4aee47e48a7ca2481a15f69cfd3ee00aa38ece1ed28376d8d6155f803e48966bc682980192842f5166464b311855911d136463a02464ecfcc9dca29c8927a4e027d0331dc428def71fe40de4edfdfef4d8b0ee6305996ad4df958e0690329c690af5e0d3bedfc3a08309713f4a2f5041684cd178ef2611336a7d3e4642770eff8b41486ed0694ea942477e522642b65b69e3b4eef61c1212cc4322579eb29b819fd9831eb62d0430bc8c406a9ea9b4b0375838fce351330348982a98b6749736a04dad4e30d525bd1033e5275ee1b280a1846056f056278c219f81fe3881e1150ead6c256bff4b68b18adcf5e84ce0de13889d12c9facfd57983a3c6ee77e52d35fd937ffbca8d84fd14ffbff87aab227d68bb80afbeefe33dbc1553c123878097fd32610cae89a8bceca8ea7433c8c171c091fb3ad15dc66c28b9c62544eac4ac0c2fb16146202079398e531e375d53afceb34e999fbc1266e61387d6e71f54291da7cca8082f01c0a5ac8a76629bca6f7ab92a103a6e0ac9c5e3a03570f6702045041543edcd772d09c2ec9737b91e35c7ac10de616f954d37d54f8e9fa64be73f09cb722d28199062627f6af637edf1d80645903b34e7db0f401f141af238c38d6a181b9b7ec1c0bd53d6287f870208f58b544cd3f5d9e572889742b888efde439c5300f6a1e757fa2c2627668fc6e9f33b213ef693467428c67c122c921ad44272feefae45518e4826c389407862c9f4504ec3c21d29af5fb5825ab8a63f1341acd5085e7e5fb72b6041e0f27e3ebfdda19dc392ae10fd83eb2a76ca11bb3fdd9bdbbbf5d3e72fa3a12eadcc5dd16b3eb15b4920dcdc9a035079579ce88f4fed9c16fd2dcd181fbb36413fbd76b147e30f2d6f9923c9dd639444771ece26df5727882b310e52a84f093fb801aead6db7359e1017edff3e08d9461b9da4d8dc38febd62cd9718079cc4ef6e071f498cf47f727f5ce78bf8b3f9079fabf6e1e5c5dae186944b2f129cc8a64e940daa7b628c6744a20fa34999e46eff312f7e44be9dbfdae627a21077b0ab7cf8e1cfcb27a9fb8608056f78a58838f9e57d88982769d0eb20354a8cadf68bad7cb6f02330e1edef9ea9a38fd9a9a1ac60aac31ae3f5c8f8b07fcccef2995404731f786cdfdc119a812dc7d30bfee5eca76d83a943833b173b71d52546cf7dcd38fc08716933a5fe8a1485df7120d2a049c24c96cdd29088528d4e6f25778c33a2fd6d74a7910bb9e5521e45e2591fc84c6251396526af292772400bf2c4bd05c5d38d5f72643446fa0bd67de7caa22fbce8ee63b50366b726b9643e7a974400f2b33a0931844aaca33b7c923f35d26ddb8c85a781e9f045c18be8cd59b2fc13d58c0650a1b8ef05f665ededa7781e2b83540fd19d649222bbca9da7230814a47d31f3373eeaf925150ad088c20f8df193da7a2d960ad340b73761787b1c0c61ee641d87aa64ba65e258d9481a0db442b505b6127df06dd9776842c02f7edd62c2376d67d13ae38a13a7d4188e5a04
+
+root@ip-10-10-121-66:~/Desktop# john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
+Note: This format may emit false positives, so it will keep trying even after finding a
+possible candidate.
+Warning: detected hash type "SSH", but the string is also recognized as "ssh-opencl"
+Use the "--format=ssh-opencl" option to force loading these as that type instead
+Using default input encoding: UTF-8
+Loaded 1 password hash (SSH [RSA/DSA/EC/OPENSSH (SSH private keys) 32/64])
+Cost 1 (KDF/cipher [0=MD5/AES 1=MD5/3DES 2=Bcrypt/AES]) is 0 for all loaded hashes
+Cost 2 (iteration count) is 1 for all loaded hashes
+Will run 2 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+industryweapon   (id_rsa)
+1g 0:00:00:19 DONE (2021-09-05 15:32) 0.05175g/s 742323p/s 742323c/s 742323C/s *7¡Vamos!
+Session completed.
+root@ip-10-10-121-66:~/Desktop#
+
+```
