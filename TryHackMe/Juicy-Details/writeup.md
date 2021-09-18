@@ -9,6 +9,9 @@
 - [FTP Server log file](https://github.com/vrbait1107/ctf_writeups/blob/main/tryhackme/assets/Juicy-Details/vsftpd.log)
 
 
+---
+---
+
 ### Task 1: Introduction
 
 You were hired as a SOC Analyst for one of the biggest Juice Shops in the world and an attacker has made their way into your network. 
@@ -26,6 +29,8 @@ Answer the questions below
 1. **Are you ready?**
 - Ans I am Ready!
 
+---
+---
 
 ### Task 2 Reconnaissance 
 
@@ -80,6 +85,8 @@ Look carefully at:
 ::ffff:192.168.10.5 - - [11/Apr/2021:09:34:43 +0000] "GET /ftp/coupons_2013.md.bak HTTP/1.1" 403 78965 "-" ""Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"
 
 ```
+---
+---
 
 ### Task 3 Stolen data 
 
@@ -134,8 +141,6 @@ Sun Apr 11 09:36:08 2021 [pid 8154] [ftp] OK DOWNLOAD: Client "::ffff:192.168.10
 5. **What service and account name were used to retrieve files from the previous question? (service, username)**
 - Ans: ftp,anonymous
 
----
-
 ```
 Sun Apr 11 08:13:32 2021 [pid 6335] CONNECT: Client "::ffff:127.0.0.1"
 Sun Apr 11 08:13:40 2021 [pid 6334] [anonymous] FAIL LOGIN: Client "::ffff:127.0.0.1"
@@ -150,6 +155,8 @@ Sun Apr 11 08:13:40 2021 [pid 6334] [anonymous] FAIL LOGIN: Client "::ffff:127.0
 Apr 11 09:41:19 thunt sshd[8260]: Accepted password for www-data from 192.168.10.5 port 40112 ssh2
 
 ```
+---
+---
 
 
 
