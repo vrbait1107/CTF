@@ -39,7 +39,9 @@ Look carefully at:
 
 
 1. **What tools did the attacker use? (Order by the occurrence in the log)**
-Ans: Nmap, Hydra, sqlmap, curl, feroxbuster
+- Ans: Nmap, Hydra, sqlmap, curl, feroxbuster
+
+---
 
 2. **What endpoint was vulnerable to a brute-force attack?**
 - Ans: /rest/user/login
@@ -49,6 +51,7 @@ Ans: Nmap, Hydra, sqlmap, curl, feroxbuster
 ::ffff:192.168.10.5 - - [11/Apr/2021:09:16:27 +0000] "GET /rest/user/login HTTP/1.0" 500 - "-" "Mozilla/5.0 (Hydra)"
 
 ```
+---
 
 3. **What endpoint was vulnerable to SQL injection?**
 - Ans: /rest/products/search
@@ -57,6 +60,7 @@ Ans: Nmap, Hydra, sqlmap, curl, feroxbuster
 ::ffff:192.168.10.5 - - [11/Apr/2021:09:29:14 +0000] "GET /rest/products/search?q=1 HTTP/1.1" 200 - "-" "sqlmap/1.5.2#stable (http://sqlmap.org)"
 
 ```
+---
 
 4. **What parameter was used for the SQL injection?**
 - Ans: q
@@ -65,6 +69,7 @@ Ans: Nmap, Hydra, sqlmap, curl, feroxbuster
 ::ffff:192.168.10.5 - - [11/Apr/2021:09:29:14 +0000] "GET /rest/products/search?q=1 HTTP/1.1" 200 - "-" "sqlmap/1.5.2#stable (http://sqlmap.org)"
 
 ```
+---
 
 5. **What endpoint did the attacker try to use to retrieve files? (Include the /)**
 - Ans: /ftp
@@ -94,6 +99,7 @@ Look carefully at:
 ::ffff:192.168.10.5 - - [11/Apr/2021:09:10:19 +0000] "GET /rest/products/41/reviews HTTP/1.1" 200 284 "http://192.168.10.4/" "Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"
 
 ```
+---
 
 2. **Was their brute-force attack successful? If so, what is the timestamp of the successful login? (Yay/Nay, 11/Apr/2021:09:xx:xx +0000)**
 - Ans: Yay, 11/Apr/2021:09:16:32 +0000
@@ -103,6 +109,7 @@ Look carefully at:
 ::ffff:192.168.10.5 - - [11/Apr/2021:09:16:32 +0000] "POST /rest/user/login HTTP/1.0" 401 26 "-" "Mozilla/5.0 (Hydra)"
 
 ```
+---
 
 3. **What user information was the attacker able to retrieve from the endpoint vulnerable to SQL injection?**
 - Ans: email, passwords
@@ -112,6 +119,7 @@ Look carefully at:
 ::ffff:192.168.10.5 - - [11/Apr/2021:09:32:51 +0000] "GET /rest/products/search?q=qwert%27))%20UNION%20SELECT%20id,%20email,%20password,%20%274%27,%20%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27%20FROM%20Users-- HTTP/1.1" 200 3742 "-" "curl/7.74.0"
 
 ```
+---
 
 4. **What files did they try to download from the vulnerable endpoint? (endpoint from the previous task, question #5)**
 - Ans: coupons_2013.md.bak,www-data.bak
@@ -121,17 +129,22 @@ Sun Apr 11 09:35:45 2021 [pid 8154] [ftp] OK DOWNLOAD: Client "::ffff:192.168.10
 Sun Apr 11 09:36:08 2021 [pid 8154] [ftp] OK DOWNLOAD: Client "::ffff:192.168.10.5", "/coupons_2013.md.bak", 131 bytes, 3.01Kbyte/sec
 
 ```
+---
 
 5. **What service and account name were used to retrieve files from the previous question? (service, username)**
 - Ans: ftp,anonymous
+
+---
 
 ```
 Sun Apr 11 08:13:32 2021 [pid 6335] CONNECT: Client "::ffff:127.0.0.1"
 Sun Apr 11 08:13:40 2021 [pid 6334] [anonymous] FAIL LOGIN: Client "::ffff:127.0.0.1"
 
 ```
+---
+
 6. What service and username were used to gain shell access to the server? (service, username)
-Ans: ssh,www-data
+- Ans: ssh,www-data
 
 ```
 Apr 11 09:41:19 thunt sshd[8260]: Accepted password for www-data from 192.168.10.5 port 40112 ssh2
