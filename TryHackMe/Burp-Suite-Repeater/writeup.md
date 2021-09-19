@@ -13,11 +13,11 @@ If you have not used Burp Suite before and have not completed the Burp Basics ro
 
 **_Answer the questions below_**
 
-Deploy the machine (and the AttackBox if you are not using your own attack VM), and let's get started!
+1. **Deploy the machine (and the AttackBox if you are not using your own attack VM), and let's get started!**
 
-Note: If you are not using the AttackBox and want to connect to this machine without the VPN, you can do so using this link once the machine has fully loaded and an IP address is displayed: https://10-10-94-216.p.thmlabs.com.
+**Note: If you are not using the AttackBox and want to connect to this machine without the VPN, you can do so using this link once the machine has fully loaded and an IP address is displayed: https://10-10-94-216.p.thmlabs.com.**
 
-- No Answer Needed.
+- _No Answer Needed._
 
 ---
 
@@ -44,9 +44,9 @@ Don't worry if this doesn't make too much sense just now -- you will get plenty 
 
 **_Answer the questions below_**
 
-1. Familiarise yourself with the Repeater interface.
+1. **Familiarise yourself with the Repeater interface.**
 
-- Ans: No Answer Needed.
+- _Ans: No Answer Needed._
 
 ---
 
@@ -78,9 +78,9 @@ We could then also use the history buttons to the right of the Send button to go
 
 Capture a request to `http://10.10.94.216` in the Proxy and send it to Repeater.
 
-1. Practice modifying and re-sending the request numerous times.
+1. **Practice modifying and re-sending the request numerous times.**
 
-- Ans: No Answer Needed.
+- _Ans: No Answer Needed._
 
 ---
 
@@ -107,13 +107,13 @@ Whilst not required for most tasks, this option can still come in handy.
 
 **_Answer the questions below_**
 
-1. Experiment with the available view options.
+1. **Experiment with the available view options.**
 
-- Ans: No Answer Needed.
+- _Ans: No Answer Needed._
 
-2. Which view option displays the response in the same format as your browser would?
+2. **Which view option displays the response in the same format as your browser would?**
 
-- Render
+- _Ans: Render_
 
 ---
 
@@ -141,9 +141,9 @@ The other sections available for viewing and/or editing are:
 
 These components can all be found as text within the request and response sections; however, it can be nice to see them in the tabular format offered by Inspector. It is well worth adding, removing, and editing headers in Inspector to get a feel for how the raw version changes as you do so.
 
-1. Get comfortable with Inspector and practice adding/removing items from the various request sections.
+1. **Get comfortable with Inspector and practice adding/removing items from the various request sections.**
 
-- Ans: No Anwer Needed.
+- _Ans: No Anwer Needed._
 
 ---
 
@@ -155,15 +155,15 @@ For now, let's start with an extremely simple example: using Repeater to alter t
 
 **_Answer the questions below_**
 
-1. Capture a request to `http://10.10.94.216/` in the Proxy and send it to Repeater.
+1. **Capture a request to `http://10.10.94.216/` in the Proxy and send it to Repeater.**
 
-- No Answer Needed.
+- _No Answer Needed._
 
-2. Send the request once from Repeater -- you should see the HTML source code for the page you requested in the response tab.
+2. **Send the request once from Repeater -- you should see the HTML source code for the page you requested in the response tab.**
 
 Try viewing this in one of the other view options (e.g. Rendered).
 
-- Ans: No Answer Needed.
+- _Ans: No Answer Needed._
 
 Using Inspector (or manually, if you prefer), add a header called FlagAuthorised and set it to have a value of True. e.g.:
 
@@ -203,9 +203,9 @@ Front-End-Https: on
 THM{Yzg2MWI2ZDhlYzdlNGFiZTUzZTIzMzVi}
 ```
 
-3. Send the request. What is the flag you receive?
+3. **Send the request. What is the flag you receive?**
 
-- THM{Yzg2MWI2ZDhlYzdlNGFiZTUzZTIzMzVi}
+- _THM{Yzg2MWI2ZDhlYzdlNGFiZTUzZTIzMzVi}_
 
 ---
 
@@ -221,15 +221,15 @@ This endpoint needs to be validated to ensure that the number you try to navigat
 
 **_Answer the questions below_**
 
-1. Capture a request to one of the numeric products endpoints in the Proxy, then forward it to Repeater.
+1. **Capture a request to one of the numeric products endpoints in the Proxy, then forward it to Repeater.**
 
-- Ans: No Answer Needed.
+- _Ans: No Answer Needed._
 
-2. See if you can get the server to error out with a "500 Internal Server Error" code by changing the number at the end of the request to extreme inputs.
+2. **See if you can get the server to error out with a "500 Internal Server Error" code by changing the number at the end of the request to extreme inputs.**
 
-What is the flag you receive when you cause a 500 error in the endpoint?
+**What is the flag you receive when you cause a 500 error in the endpoint?**
 
-- Ans: THM{N2MzMzFhMTA1MmZiYjA2YWQ4M2ZmMzhl}
+- _Ans: THM{N2MzMzFhMTA1MmZiYjA2YWQ4M2ZmMzhl}_
 
 **Request**
 
@@ -449,9 +449,9 @@ Hey presto, we have a flag!
 
 Exploit the union SQL injection vulnerability in the site.
 
-1. What is the flag?
+1. **What is the flag?**
 
-- Ans: THM{ZGE3OTUyZGMyMzkwNjJmZjg3Mzk1NjJh}
+- _Ans: THM{ZGE3OTUyZGMyMzkwNjJmZjg3Mzk1NjJh}_
 
 **Response**
 
@@ -537,8 +537,8 @@ The next room in the module will go on to look at the Burp Suite Intruder tool.
 
 **_Answer the questions below_**
 
-1. I can use Burp Suite Repeater!
+1. **I can use Burp Suite Repeater!**
 
-- No Answer Needed.
+- _Ans: No Answer Needed._
 
 ---
