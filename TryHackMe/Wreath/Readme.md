@@ -302,7 +302,9 @@ In real life we would perform a "footprinting" phase of the engagement at this p
 
 - **_No Answer Needed_**
 
-### Task 6
+---
+
+### Task 6: Webserver Exploitation
 
 In the previous task we found a vulnerable service[1][2] running on the target which will give us the ability to execute commands on the target.
 
@@ -635,6 +637,28 @@ Type commands to have them executed on the target.←[0m
 sh: root: command not found
 # whoami
 root
+
+```
+
+3. **Success! We won't need to escalate privileges here, so we can move on to the next step in the exploitation process.**
+
+**Before we do though: nice though this pseudoshell is, it's not a full reverse shell.**
+
+**Get a reverse shell from the target. You can either do this manually, or by typing shell into the pseudoshell and following the instructions given.**
+
+- **_No Answer Needed._**
+
+4. **Optional: Stabilise the reverse shell. There are several techniques for doing this detailed [here](https://tryhackme.com/room/introtoshells).**
+
+- **_No Answer Needed._**
+
+5. **Now for a little post-exploitation!**
+
+**What is the root user's password hash?**
+
+- **_$6$i9vT8tk3SoXXxK2P$HDIAwho9FOdd4QCecIJKwAwwh8Hwl.BdsbMOUAd3X/chSCvrmpfy.5lrLgnRVNq6/6g0PxK9VqSdy47/qKXad1_**
+
+```
 # cat /etc/shadow
 root:$6$i9vT8tk3SoXXxK2P$HDIAwho9FOdd4QCecIJKwAwwh8Hwl.BdsbMOUAd3X/chSCvrmpfy.5lrLgnRVNq6/6g0PxK9VqSdy47/qKXad1::0:99999:7:::
 bin:*:18358:0:99999:7:::
@@ -669,24 +693,6 @@ mysql:!!:18573::::::
 #
 
 ```
-
-3. **Success! We won't need to escalate privileges here, so we can move on to the next step in the exploitation process.**
-
-**Before we do though: nice though this pseudoshell is, it's not a full reverse shell.**
-
-**Get a reverse shell from the target. You can either do this manually, or by typing shell into the pseudoshell and following the instructions given.**
-
-- **_No Answer Needed._**
-
-4. **Optional: Stabilise the reverse shell. There are several techniques for doing this detailed [here](https://tryhackme.com/room/introtoshells).**
-
-- **_No Answer Needed._**
-
-5. **Now for a little post-exploitation!**
-
-**What is the root user's password hash?**
-
-- **_$6$i9vT8tk3SoXXxK2P$HDIAwho9FOdd4QCecIJKwAwwh8Hwl.BdsbMOUAd3X/chSCvrmpfy.5lrLgnRVNq6/6g0PxK9VqSdy47/qKXad1_**
 
 6. **You won't be able to crack the root password hash, but you might be able to find a certain file that will give you consistent access to the root user account through one of the other services on the box.**
 
