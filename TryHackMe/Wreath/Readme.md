@@ -762,3 +762,70 @@ GbJ7oAQ232an8AAAARcm9vdEB0bS1wcm9kLXNlcnYBAg==
 **We have everything we need for now. Let's move on to the next section: Pivoting!**
 
 - **_Ans: No Answer Needed._**
+
+---
+
+### Task 7: Pivoting What is Pivoting? 
+
+Pivoting is the art of using access obtained over one machine to exploit another machine deeper in the network. It is one of the most essential aspects of network penetration testing, and is one of the three main teaching points for this room.
+
+Put simply, by using one of the techniques described in the following tasks (or others!), it becomes possible for an attacker to gain initial access to a remote network, and use it to access other machines in the network that would not otherwise be accessible:
+
+![Pivoting](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Wreath/wreath-9.png)
+
+In this diagram, there are four machines on the target network: one public facing server, with three machines which are not exposed to the internet. By accessing the public server, we can then pivot to attack the remaining three targets.
+
+**_Note_**: _This is an example diagram and is not representative of the Wreath Network._
+
+This section will contain a lot of theory for pivoting from both Linux and Windows compromised targets, which we will then put into practice against the next machine in the network. Remember though: you have a sandbox environment available to you with the compromised machine in the Wreath network. After the enumeration tasks coming up, you'll also know about the next machine in the network. Feel free to use these boxes to play around with the tools as you go through the tasks, but be aware that some techniques may be stopped by the firewalls involved (which we will look at mitigating later in the network).
+
+
+**_Answer the questions below_**
+
+1. **Read the pivoting introduction**
+- **_No Answer Needed._**
+
+---
+
+### Task 8: Pivoting High-level Overview 
+
+
+The methods we use to pivot tend to vary between the different target operating systems. Frameworks like Metasploit can make the process easier, however, for the time being, we'll be looking at more manual techniques for pivoting.
+
+There are two main methods encompassed in this area of pentesting:
+
+- **Tunnelling/Proxying:** Creating a proxy type connection through a compromised machine in order to route all desired traffic into the targeted network. This could potentially also be tunnelled inside another protocol (e.g. SSH tunnelling), which can be useful for evading a basic Intrusion Detection System (IDS) or firewall
+- **Port Forwarding:** Creating a connection between a local port and a single port on a target, via a compromised host
+
+A proxy is good if we want to redirect lots of different kinds of traffic into our target network -- for example, with an nmap scan, or to access multiple ports on multiple different machines.
+
+Port Forwarding tends to be faster and more reliable, but only allows us to access a single port (or a small range) on a target device.
+
+Which style of pivoting is more suitable will depend entirely on the layout of the network, so we'll have to start with further enumeration before we decide how to proceed. It would be sensible at this point to also start to draw up a layout of the network as you see it -- although in the case of this practice network, the layout is given in the box at the top of the screen.
+
+As a general rule, if you have multiple possible entry-points, try to use a Linux/Unix target where possible, as these tend to be easier to pivot from. An outward facing Linux webserver is absolutely ideal.
+
+The remaining tasks in this section will cover the following topics:
+
+- Enumerating a network using native and statically compiled tools
+- Proxychains / FoxyProxy
+- SSH port forwarding and tunnelling (primarily Unix)
+- plink.exe (Windows)
+- socat (Windows and Unix)
+- chisel (Windows and Unix)
+- sshuttle (currently Unix only)
+
+This is far from an exhaustive list of the tools available for pivoting, so further research is encouraged.
+
+**_Answer the questions below_**
+
+1. **Which type of pivoting creates a channel through which information can be sent hidden inside another protocol?**
+- **_Tunnelling_**
+
+2. **Research: Not covered in this Network, but good to know about. Which Metasploit Framework Meterpreter command can be used to create a port forward?**
+
+- **_Ans: Portfwd_**
+
+![Port Forwarding with Metasploit](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Wreath/wreath-10.png)
+
+---
