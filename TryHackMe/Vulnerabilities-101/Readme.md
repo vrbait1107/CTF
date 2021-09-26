@@ -17,7 +17,7 @@ An enormous part of penetration testing is knowing the skills and resources for 
 **_Answer the questions below_** 
 
 1. **Read this task!**
-**_No Answer Needed._**
+- **_No Answer Needed._**
 
 ---
 
@@ -46,10 +46,10 @@ As a cybersecurity researcher, you will be assessing applications and systems - 
 
 1. **An attacker has been able to upgrade the permissions of their system account from "user" to "administrator". What type of vulnerability is this?**
 
-- **Ans: Operating System**
+- **_Ans: Operating System_**
 
 2. **You manage to bypass a login panel using cookies to authenticate. What type of vulnerability is this?**
-- **Ans: Application Logic**
+- **_Ans: Application Logic_**
 
 ---
 
