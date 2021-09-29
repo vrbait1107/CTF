@@ -278,7 +278,142 @@ There are five sub-tabs here:
 
 **In the next section, we will cover the Burp Proxy -- a much more hands-on aspect of the room.**
 
-**_Ans: No Answer Needed._**
+- **_Ans: No Answer Needed._**
+
+---
+
+### Task 8: Proxy Introduction to the Burp Proxy
+
+The Burp Proxy is the most fundamental (and most important!) of the tools available in Burp Suite. It allows us to capture requests and responses between ourselves and our target. These can then be manipulated or sent to other tools for further processing before being allowed to continue to their destination.
+
+For example, if we make a request to `https://tryhackme.com` through the Burp Proxy, our request will be captured and won't be allowed to continue to the TryHackMe servers until we explicitly allow it through. We can choose to do the same with the response from the server, although this isn't active by default. This ability to intercept requests ultimately means that we can take complete control over our web traffic -- an invaluable ability when it comes to testing web applications.
+
+There are a few configurations we need to make before we can use the proxy, but let's start by looking at the interface.
+
+**Note:** _You do not need to follow along with this task -- just read the information and understand what the Proxy is used for._
+
+When we first open the Proxy tab, Burp gives us a bunch of useful information and background reading. This information is well worth reading through; however, the real magic happens after we capture a request:
+
+![Proxy Tab](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-10.png)
+
+With the proxy active, a request was made to the TryHackMe website. At this point, the browser making the request will hang, and the request will appear in the Proxy tab giving us the view shown in the screenshot above. We can then choose to forward or drop the request (potentially after editing it). We can also do various other things here, such as sending the request to one of the other Burp modules, copying it as a cURL command, saving it to a file, and many others.
+
+When we have finished working with the Proxy, we can click the "Intercept is on" button to disable the Intercept, which will allow requests to pass through the proxy without being stopped.
+
+Burp Suite will still (by default) be logging requests made through the proxy when the intercept is off. This can be very useful for going back and analysing prior requests, even if we didn't specifically capture them when they were made.
+
+Burp will also capture and log WebSocket communication, which, again, can be exceedingly helpful when analysing a web app.
+
+The logs can be viewed by going to the "HTTP history" and "WebSockets history" sub-tabs:
+
+![HTTP Proxy Tab](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-11.png)
+
+It is worth noting that any requests captured here can be sent to other tools in the framework by right-clicking them and choosing "Send to...". For example, we could take a previous HTTP request that has already been proxied to the target and send it to Repeater.
+
+Finally, there are also Proxy specific options, which we can view in the "Options" sub-tab.
+
+These options give us a lot of control over how the proxy operates, so it is an excellent idea to familiarise yourself with these.
+
+For example, the proxy will not intercept server responses by default unless we explicitly ask it to on a per-request basis. We can override the default setting by selecting the "Intercept responses based on the following rules" checkbox and picking one or more rules. The "`Or` `Request` `Was Intercepted`" rule is good for catching responses to all requests that were intercepted by the proxy:
+
+![Intercept Server Response](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-12.png)
+
+The "`And` `URL` `Is in target scope`" is another very good default rule; we will look at scoping later in this room.
+
+You can make your own rules for most of the Proxy options, so this is one section where looking around and experimenting will serve you very well indeed!
+
+Another particularly useful section of this sub-tab is the "Match and Replace" section; this allows you to perform regexes on incoming and outgoing requests. For example, you can automatically change your user agent to emulate a different web browser in outgoing requests or remove all cookies being set in incoming requests. Again, you are free to make your own rules here.
+
+**_Answer the questions below_**
+
+1. **Which button would we choose to send an intercepted request to the target in Burp Proxy?**
+
+- **_Ans: Forward_**
+
+2. **[Research] What is the default keybind for this?**
+
+_**Note: Assume you are using Windows or Linux (i.e. swap Cmd for Ctrl).**_
+
+- **_Ans: ctrl+F_**
+
+---
+
+### Task 9: Proxy Connecting through the Proxy (FoxyProxy)
+
+You've seen the theory; now it's time to start using the proxy for yourself.
+
+There are two ways to proxy our traffic through Burp Suite.
+
+1. We could use the embedded browser (we will cover this in a later task).
+2. We can configure our local web browser to proxy our traffic through Burp; this is more common and so will be the focus of this task.
+
+The Burp Proxy works by opening a web interface on `127.0.0.1:8080` (by default). As implied by the fact that this is a "proxy", we need to redirect all of our browser traffic through this port before we can start intercepting it with Burp. We can do this by altering our browser settings or, more commonly, by using a Firefox browser extension called [FoxyProxy](https://getfoxyproxy.org/). FoxyProxy allows us to save proxy profiles, meaning we can quickly and easily switch to our "Burp Suite" profile in a matter of clicks, then disable the proxy just as easily.
+
+**Note:** _All instructions will be given with Firefox in mind, as this is the default browser for both Kali Linux and the TryHackMe AttackBox. If you are using another browser locally then you are advised to use the AttackBox, or you may otherwise need to find alternative methods to those presented in this task. If you can't get the proxy working in your local browser and do not want to use the AttackBox, then you may wish to skip ahead to the Burp Suite Browser task._
+
+There are two versions of FoxyProxy: Basic and Standard. Both versions allow you to change your proxy settings on the fly; however, FoxyProxy Standard gives you a lot more control over what traffic gets sent through the proxy. For example, it will allow you to set pattern matching rules to determine whether a request should be proxied or not: this is more complicated than the simple proxy offered by FoxyProxy basic.
+
+The basic edition is more than adequate for our usage. It is pre-installed and configured in the Firefox browser of the AttackBox, so if you are using the AttackBox, please feel free to skip ahead to the last section of this task.
+
+If you are using your own machine, you can download FoxyProxy Basic [here](https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-basic/).
+
+Once installed, a button should appear at the top right of the screen which allows you to access your proxy configurations:
+
+![FoxyProxy](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-13.png)
+
+There are no default configurations, so let's click on the "Options" button to create our Burp Proxy config.
+
+This will open a new browser tab with the FoxyProxy options page:
+
+![FoxyProxy Options](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-14.png)
+
+Click on the "Add" button and fill in the following values:
+
+1. Title: `Burp` (or anything else you prefer)
+2. Proxy IP: `127.0.0.1`
+3. Port: `8080`
+
+![Add Proxy](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-15.png)
+
+Now click "Save".
+
+When you click on the FoxyProxy icon at the top of the screen, you will see that that there is a configuration available for Burp:
+
+![Foxy Proxy](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-16.png)
+
+If we click on the "Burp" config, our browser will start directing all of our traffic through 127.0.0.1:8080. Be warned: if Burp Suite is not running, your browser will not be able to make any requests when this config is activated!
+
+Activate this config now -- the icon in the menu should change to indicate that we have a proxy running:
+
+![Foxy Proxy Icon](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-17.png)
+
+Next, switch over to Burp Suite and make sure the Intercept is On:
+
+![Intercept The Request](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-18.png)
+
+Now, try accessing the homepage for `http://MACHINE_IP/` in Firefox. Your browser should hang, and your proxy will populate with the request headers.
+
+Congratulations, you just intercepted your first request!
+
+From here, you can choose to forward or drop the request. Alternatively, you could send it to another tool or perform any number of other actions by right-clicking on the request and selecting an option from the right-click menu.
+
+**_Remember:_** _Whilst you are connected to the proxy and have the Proxy Intercept switched on, your browser will hang whenever you make a request. A very common mistake when you are learning to use Burp Suite (and indeed, later on!) is to accidentally leave the intercept switched on and ergo be unable to make any web requests through your browser. If your browser is hanging and you don't know why: check your proxy!_
+
+**_Answer the questions below_**
+
+1. **Read through the options in the right-click menu.**
+
+**There is one particularly useful option that allows you to intercept and modify the response to your request.**
+
+**What is this option?**
+
+**Note: The option is in a dropdown sub-menu.**
+
+- **_Ans: Response to this request_**
+
+2. **[Bonus Question -- Optional] Try installing FoxyProxy standard and have a look at the pattern matching features.**
+
+- **_Ans: No Answer Needed._**
 
 ---
 
