@@ -417,6 +417,215 @@ From here, you can choose to forward or drop the request. Alternatively, you cou
 
 ---
 
+### Task 10: Proxy Proxying HTTPS
+
+Note: The AttackBox is already configured to solve the problem posed in this task. If you are using the AttackBox and don't wish to read through the information here, you can skip to the next task.
+
+Great, so we can intercept HTTP traffic -- what's next?
+
+Unfortunately, there's a problem. What happens if we navigate to a site with TLS enabled? For example, `https://google.com/:`
+
+![HTTPS Proxy](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-19.png)
+
+We get an error.
+
+Specifically, Firefox is telling us that the Portswigger Certificate Authority (CA) isn't authorised to secure the connection.
+
+Fortunately, Burp offers us an easy way around this. We need to get Firefox to trust connections secured by Portswigger certs, so we will manually add the CA certificate to our list of trusted certificate authorities.
+
+First, with the proxy activated head to http://burp/cert; this will download a file called `cacert.der` -- save it somewhere on your machine.
+
+Next, type `about:preferences` into your Firefox search bar and press enter; this takes us to the FireFox settings page. Search the page for "certificates" and we find the option to "View Certificates":
+
+![Burp Certificate](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-20.png)
+
+Clicking the "View Certificates" button allows us to see all of our trusted CA certificates. We can register a new certificate for Portswigger by pressing "Import" and selecting the file that we just downloaded.
+
+In the menu that pops up, select "Trust this CA to identify websites", then click Ok:
+
+![CA Certificate](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-21.png)
+
+We should now be free to visit any TLS enabled sites that we wish!
+
+The following video shows the full import process:
+
+![Burp Certificate](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-22.gif)
+
+**_Answer the questions below_**
+
+1. **If you are not using the AttackBox, configure Firefox (or your browser of choice) to accept the Portswigger CA certificate for TLS communication through the Burp Proxy.**
+
+- **_Ans: No Answer Needed._**
+
+---
+
+### Task 11: Proxy The Burp Suite Browser
+
+If the last few tasks seemed overly complex, rest assured, this topic will be a lot simpler.
+
+In addition to giving us the option to modify our regular web browser to work with the proxy, Burp Suite also includes a built-in Chromium browser that is pre-configured to use the proxy without any of the modifications we just had to do.
+
+Whilst this may seem ideal, it is not as commonly used as the process detailed in the previous few tasks. People tend to stick with their own browser as it gives them a lot more customisability; however, both are perfectly valid choices.
+
+We can start the Burp Browser with the "Open Browser" button in the proxy tab:
+
+![Burp Suite Browser](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-23.png)
+
+A Chromium window will now pop up. Any requests we make in this will go through the proxy.
+
+**_Note:_** _There are many settings to do with the Burp Browser in the Project options and User options tabs -- make sure to go look at them!_
+
+If we are running on Linux as the root user (as we are with the AttackBox), Burp Suite is unable to create a sandbox environment to start the Burp Browser in, causing it to throw an error and die:
+
+![Burp Browser Error](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-24.png)
+
+There are two simple solutions to this:
+
+- **The smart option:** We could create a new user and run Burp Suite under a low privilege account.
+- **The easy option:** We could go to `Project options -> Misc -> Embedded Browser` and check the `Allow the embedded browser to run without a sandbox` option. Checking this option will allow the browser to start, but be aware that it is disabled by default for security reasons: if we get compromised using the browser, then an attacker will have access to our entire machine. On the training environment of the AttackBox this is unlikely (and isn't a huge issue even if it does happen), but keep it in mind if you try this on a local installation of Burp Suite.
+
+Be aware that you will need to do this if using the embedded browser on the AttackBox.
+
+**_Answer the questions below_**
+
+1. **Using the in-built browser, make a request to http://MACHINE_IP/ and capture it in the proxy.**
+
+- **_No Answer Needed._**
+
+---
+
+### Task 12 Proxy Scoping and Targeting
+
+Finally, we come to one of the most important parts of using the Burp Proxy: Scoping.
+
+It can get extremely tedious having Burp capturing all of our traffic. When it logs everything (including traffic to sites we aren't targeting), it muddies up logs we may later wish to send to clients. In short, allowing Burp to capture everything can quickly become a massive pain.
+
+What's the solution? Scoping.
+
+Setting a scope for the project allows us to define what gets proxied and logged. We can restrict Burp Suite to only target the web application(s) that we want to test. The easiest way to do this is by switching over to the "Target" tab, right-clicking our target from our list on the left, then choosing "Add To Scope". Burp will then ask us whether we want to stop logging anything which isn't in scope -- most of the time we want to choose "yes" here.
+
+![Project Scoping](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-25.gif)
+
+We can now check our scope by switching to the "Scope" sub-tab (as shown in the GIF above).
+
+The Scope sub-tab allows us to control what we are targeting by either Including or Excluding domains / IPs. This is a very powerful section, so it's well worth taking the time to get accustomed to using it.
+We just chose to disable logging for out of scope traffic, but the proxy will still be intercepting everything. To turn this off, we need to go into the Proxy Options sub-tab and select "`And URL Is in target scope`" from the Intercept Client Requests section:
+
+![Project Scoping](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-26.png)
+
+With this option selected, the proxy will completely ignore anything that isn't in the scope, vastly cleaning up the traffic coming through Burp.
+
+**_Answer the questions below_**
+
+1. **Add http://MACHINE_IP/ to your scope and change the Proxy settings to only intercept traffic to in-scope targets.**
+
+**See the difference between the amount of traffic getting caught by the proxy before and after limiting the scope.**
+
+- **_No Answer Needed._**
+
+---
+
+### Task 13: Proxy Site Map and Issue Definitions
+
+Control of the scope may be the most useful aspect of the Target tab, but it's by no means the only use for this section of Burp.
+
+There are three sub-tabs under Target:
+
+- **Site map** allows us to map out the apps we are targeting in a tree structure. Every page that we visit will show up here, allowing us to automatically generate a site map for the target simply by browsing around the web app. Burp Pro would also allow us to spider the targets automatically (i.e. look through every page for links and use them to map out as much of the site as-is publicly accessible using the links between pages); however, with Burp Community, we can still use this to accumulate data whilst we perform our initial enumeration steps.
+  The Site map can be especially useful if we want to map out an API, as whenever we visit a page, any API endpoints that the page retrieves data from whilst loading will show up here.
+- **Scope:** We have already seen the Scope sub-tab -- it allows us to control Burp's target scope for the project.
+- **Issue Definitions:** Whilst we don't have access to the Burp Suite vulnerability scanner in Burp Community, we do still have access to a list of all the vulnerabilities it looks for. The Issue Definitions section gives us a huge list of web vulnerabilities (complete with descriptions and references) which we can draw from should we need citations for a report or help describing a vulnerability.
+
+**_Answer the questions below_**
+
+1. **Take a look around the site on http://MACHINE_IP/ -- we will be using this a lot throughout the module. Visit every page linked to from the homepage, then check your sitemap -- one endpoint should stand out as being very unusual!**
+
+**Visit this in your browser (or use the "Response" section of the site map entry for that endpoint)**
+
+**What is the flag you receive?**
+
+- **_THM{NmNlZTliNGE1MWU1ZTQzMzgzNmFiNWVk}_**
+
+2. **Look through the Issue Definitions list.**
+
+**What is the typical severity of a Vulnerable JavaScript dependency?**
+
+- **_Ans: Low_**
+
+---
+
+### Task 14: Practical Example Attack
+
+Having looked at how to set up and configure our proxy, let's go through a simplified real-world example.
+
+We will start by taking a look at the support form at `http://MACHINE_IP/ticket/:`
+
+![HTML Form](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-27.png)
+
+In a real-world web app pentest, we would test this for a variety of things: one of which would be Cross-Site Scripting (or XSS). If you have not yet encountered XSS, it can be thought of as injecting a client-side script (usually in Javascript) into a webpage in such a way that it executes. There are various kinds of XSS -- the type that we are using here is referred to as "Reflected" XSS as it only affects the person making the web request.
+
+Let's begin.
+
+**_Answer the questions below_**
+
+1. **Try typing: `<script>alert("Succ3ssful XSS")</script>`, into the "Contact Email" field. You should find that there is a client-side filter in place which prevents you from adding any special characters that aren't allowed in email addresses:**
+
+![HTML Form](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-28.gif)
+
+- **_No Answer Needed._**
+
+2. **Fortunately for us, client-side filters are absurdly easy to bypass. There are a variety of ways we could disable the script or just prevent it from loading in the first place.**
+
+**Let's focus on simply bypassing the filter for now.**
+
+**First, make sure that your Burp Proxy is active and that the intercept is on.**
+
+- **_No Answer Needed._**
+
+3. **Now, enter some legitimate data into the support form. For example: "pentester@example.thm" as an email address, and "Test Attack" as a query.**
+
+**Submit the form -- the request should be intercepted by the proxy.**
+
+- **_No Answer Needed._**
+
+4. **With the request captured in the proxy, we can now change the email field to be our very simple payload from above: `<script>alert("Succ3ssful XSS")</script>`. After pasting in the payload, we need to select it, then URL encode it with the Ctrl + U shortcut to make it safe to send. This process is shown in the GIF below:**
+
+**GIF demonstrating the explained process of intercepting and URL encoding the pasted payload**
+
+![Proxy](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-29.gif)
+
+**Finally, press the "Forward" button to send the request.**
+
+**You should find that you get an alert box from the site indicating a successful XSS attack!**
+
+![XSS Attack](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Burp-Suite-The-Basics/Picture-30.png)
+
+- **_No Answer Needed._**
+
+5. **Congratulations, you bypassed the filter!**
+
+**Don't expect it to be quite so easy in real life, but this should hopefully give you an idea of the kind of situation in which Burp Proxy can be useful.**
+
+- **_No Answer Needed._**
+
+---
+
+### Task 15: Conclusion Room Conclusion
+
+We have now reached the end of the Burp Basics room.
+
+This room has hopefully given you a good grasp of the Burp Suite interface and configuration options, as well as giving you a working knowledge of the Burp Proxy.
+
+You are advised to experiment with these foundations until you are completely comfortable with them. Burp Suite is an invaluable tool in a web or mobile application pentester's arsenal. We will be building on these skills in the next room of the module covering Burp Suite Repeater.
+
+**_Answer the questions below_**
+
+1. **I understand the fundamentals of using Burp Suite!**
+
+- **_Ans: No Answer Needed_**
+
+---
+
 ### CREDITS: Created by [tryhackme](https://tryhackme.com/p/tryhackme) and [MuirlandOracle](https://tryhackme.com/p/MuirlandOracle)
 
 ---
