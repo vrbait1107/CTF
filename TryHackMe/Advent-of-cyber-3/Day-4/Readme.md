@@ -1,4 +1,4 @@
-## [Day 3] Web Exploitation Christmas Blackout
+## [Day 4] Web Exploitation Santa's Running Behind
 
 ### Story
 
@@ -125,7 +125,7 @@ If you are interested in learning more about Burp Suite, check out the Burp Suit
 
 **Flag**
 
-![Payload Options](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Advent-of-cyber-3/Day-4/Picture-13.png "Payload Options")
+![Payload Options](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Advent-of-cyber-3/Day-4/Picture-14.png "Payload Options")
 
 4. **What is the flag in Santa's itinerary?**
 
