@@ -10,7 +10,7 @@ In this task, we will be covering the basics of a Local File Inclusion (LFI) vul
 
 Let's begin by starting the machine attached to this task,
 
-**What is a Local File Inclusion (LFI) vulnerability?**
+### What is a Local File Inclusion (LFI) vulnerability?
 
 An LFI vulnerability is found in various web applications. As an example, in the PHP, the following functions cause this kind of vulnerability:
 
@@ -21,11 +21,11 @@ An LFI vulnerability is found in various web applications. As an example, in the
 
 It is a web application vulnerability that allows the attacker to include and read local files on the server. These files could contain sensitive data such as cryptographic keys, databases that contain passwords, and other private data. An LFI vulnerability happens due to a developer's lack of security awareness. In some cases, developers need to include the content of other local files within a specific page. Suppose a developer includes files without proper input validation. In that case, the LFI vulnerability will exist as a developer should never trust user input and keep all inputs from users to be filtered and sanitized. The main issue of these vulnerabilities is the lack of input validation, in which the user inputs are not sanitized or validated, and the user controls them.
 
-**What is the risk of LFI?**
+### What is the risk of LFI?
 
 Once you find an LFI vulnerability, it is possible to read sensitive data if you have readable permissions on files. Thus, one of the most significant risks is leaking sensitive data accessed by a regular user. Also, in some cases, an LFI vulnerability could be chained to perform Remote Code Execution RCE on the server. If we can inject or write to a file on the system, we take advantage of LFI to get RCE. In this task, we prepared a web application with an LFI vulnerability and a possible way to get RCE. We'll be looking at this web application later.
 
-**Identifying and testing for LFI**
+### Identifying and testing for LFI
 
 Usually, attackers are interested in HTTP parameters to manipulate the input and inject attack payloads to see how the web application behaves. In general, if you are looking for an entry point to test web application attack types, then it is important to use the web app and check its functionalities. An entry point could be HTTP GET or POST parameters that pass an argument or data to the web application to perform a specific operation.
 
@@ -172,7 +172,7 @@ Now using the LFI, load the log file to get the PHP code executed. Note that it 
 
 Now it is practice time. We have to apply what we discussed to gain RCE. We have to include PHP code into the User-Agent and then use the LFI vulnerability called the log file to get your PHP code executed, then answer the question below.
 
-LFI to RCE via PHP Sessions
+### LFI to RCE via PHP Sessions
 
 The LFI to RCE via PHP sessions follows the same concept of the log poisoning technique. PHP sessions are files within the operating system that store temporary information. After the user logs out of the web application, the PHP session information will be deleted.
 
