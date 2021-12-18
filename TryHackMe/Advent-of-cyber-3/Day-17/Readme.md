@@ -91,20 +91,20 @@ Note: you can also have public write permissions to a Bucket. This is generally 
 
 There are also two levels of public buckets and objects. The first level is "Anyone." This is what you experienced with the irs-form-990 bucket. You could just hit that URL from your local browser. The second level is just as public - and that is public to Any AWS Customer (what AWS foolishly called AuthenticatedUsers for many years). Anyone with a credit card can create an AWS account; therefore, Authenticated Users doesn't provide much data protection.
 
-| ACL Name   | BUCKET                       | OBJECT |
-| ---------- | ---------------------------- | ------ |
-| Anyone<br> | Anonymously list contents of |
+| ACL Name               | BUCKET                                                                                 | OBJECT                                                                |
+| ---------------------- | -------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Anyone<br>             | Anonymously list contents of
 
 the bucket via curl or with
 
 aws s3 ls --no-sign-request | Ability to download via curl or
 
-aws s3 cp --no-sign-request |
+aws s3 cp --no-sign-request          |
 | AuthenticatedUsers<br> | Can only list the bucket with
 
 active AWS keys via
 
-aws s3 ls | You can only download the object with
+aws s3 ls                          | You can only download the object with
 
 active AWS Keys via
 
