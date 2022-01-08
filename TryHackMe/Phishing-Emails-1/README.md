@@ -130,11 +130,11 @@ Lastly, each protocol has its associated default ports and recommended ports. Fo
 
 - **_Ans:- 465_**
 
-2. **_What port is classified as Secure Transport for IMAP?_**
+2. **What port is classified as Secure Transport for IMAP?**
 
 - **_Ans:- 993_**
 
-3. **_What port is classified as Secure Transport for POP3?_**
+3. **What port is classified as Secure Transport for POP3?**
 
 - **_Ans:- 995_**
 
@@ -218,7 +218,7 @@ Note: The questions below are based on the Media Temple KB article.
 
 2. **_Once you find the email sender's IP address, where can you retrieve more information about the IP?_**
 
-- ***
+- ***http://www.arin.net***
 
 ---
 
