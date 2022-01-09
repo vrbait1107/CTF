@@ -136,7 +136,7 @@ Here are some quick observations about this email sample:
 2. A sense of urgency is introduced in this email. Notice that the link to download the fax document expires on the same day.
 3. There is an action to perform. In this case, a button to download the fax. 
 
-![OneDrive](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Phishing-OneDrives-2/Picture-9.png "OneDrive")
+![OneDrive](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Phishing-Emails-2/Picture-9.png "OneDrive")
 
 The above image shows the victim is redirected to a page created to pass as OneDrive. Notice that the URL is not anything Microsoft-related. 
 
