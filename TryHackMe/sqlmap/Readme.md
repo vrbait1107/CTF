@@ -143,18 +143,18 @@ These options can be used to enumerate the back-end database management system i
 | -------------------------------- | ------------------------------------------- |
 | \-a, --all                       | Retrieve everything<br>                     |
 | \-b, --banner                    | Retrieve DBMS banner<br>                    |
-| \--current-user<br>              | Retrieve DBMS current user                  |
+| \--current-user<br>              | Retrieve DBMS current user</br>             |
 | \--current-db<br>                | Retrieve DBMS current database<br>          |
 | \--passwords<br>                 | Enumerate DBMS users password hashes<br>    |
-| \--dbs<br>                       |   Enumerate DBMS databases<br>              |
+| \--dbs<br>                       | Enumerate DBMS databases<br>                |
 | \--tables<br>                    | Enumerate DBMS database tables<br>          |
 | \--columns<br>                   | Enumerate DBMS database table columns<br>   |
 | \--schema<br>                    | Enumerate DBMS schema<br>                   |
 | \--dump<br>                      | Dump DBMS database table entries<br>        |
 | \--dump-all<br>                  | Dump all DBMS databases tables entries<br>  |
-| \--is-dba           <br>         |  Detect if the DBMS current user is DBA<br> |
-| \-D <DB NAME><br>                | DBMS database to enumerate<br>              |
-| \-T <TABLE NAME><br>             | DBMS database table(s) to enumerate<br>     |
+| \--is-dba           <br>         | Detect if the DBMS current user is DBA<br>  |
+| \-D `<DB NAME>`<br>              | DBMS database to enumerate<br>              |
+| \-T `<TABLE NAME>`<br>           | DBMS database table(s) to enumerate<br>     |
 | \-C COL<br>                      | DBMS database table column(s) to enumerate  |
 
 **Operating System access commands**
