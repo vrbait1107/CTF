@@ -146,7 +146,7 @@ These options can be used to enumerate the back-end database management system i
 | \--current-user<br>              | Retrieve DBMS current user                  |
 | \--current-db<br>                | Retrieve DBMS current database<br>          |
 | \--passwords<br>                 | Enumerate DBMS users password hashes<br>    |
-|           --dbs             <br> |   Enumerate DBMS databases<br>              |
+| \--dbs<br>                       |   Enumerate DBMS databases<br>              |
 | \--tables<br>                    | Enumerate DBMS database tables<br>          |
 | \--columns<br>                   | Enumerate DBMS database table columns<br>   |
 | \--schema<br>                    | Enumerate DBMS schema<br>                   |
