@@ -1,4 +1,4 @@
-## Vulnerabilities 101
+## Vulnerabilities 101 Writeup
 
 #### Understand the flaws of an application and apply your researching skills on some vulnerability databases.
 
