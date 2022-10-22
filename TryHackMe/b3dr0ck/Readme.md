@@ -253,9 +253,23 @@ We have got base64 decoded value, lets decode value go to cyberchef and decode t
 
 ![Cyberchef](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/b3dr0ck/Picture-1.png)
 
+a00a12aad6b7c16bf07032bd05a31d56
+flintstonesvitamins
+
 We have got MD5 password, Lets crack with md5 cracker.
 
 ![Cyberchef](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/b3dr0ck/Picture-2.png)
 
 
+```
 
+fred@b3dr0ck:~$ su root
+Password: 
+root@b3dr0ck:/home/fred# cd ~
+root@b3dr0ck:~# ls
+pass.txt  root.txt  snap
+root@b3dr0ck:~# cat root.txt 
+THM{de4043c009214b56279982bf10a661b7}
+root@b3dr0ck:~#
+
+```
