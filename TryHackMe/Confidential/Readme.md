@@ -23,16 +23,26 @@ Check out similar content on TryHackMe:
 - There is one pdf.
 
 ![PDF](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Confidential/Picture-1.png)
+
 - There is one tool, pdfiamges we extract pdf images from that.
 - run command `pdfimages --help` we can see help section.
+  
 ![pdfimages help](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Confidential/Picture-2.png)
+
 - Run command `pdfimages -png Repdf.pdf ext` to extract image in png format.
+  
 ![QR Code](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Confidential/Picture-3.png)
+
 - We have now png images of QR Code.
+  
 ![QR Code](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Confidential/Picture-4.png)
+
 - Just crop QR code to find flag.
+  
 ![Cropeed QR Code](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Confidential/Picture-5.png)
+
 - Flag
+
 ![Flag](https://github.com/vrbait1107/CTF_WRITEUPS/blob/main/TryHackMe/images/Confidential/Picture-6.png)
 
 
